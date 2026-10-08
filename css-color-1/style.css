@@ -1,17 +1,41 @@
-h1{
+h1{text-align: center;
     font-size: 32px;
-    color: #ff3366;
+    color: hwb(345 20% 0%);
 }
 
 .pera{
+    text-align: center;
     color: hsl(230, 89%, 14%);
 }
 
-#btn {
-    color: #ff0000;
+.lorem{
+    color: rgb(255 0 0 );
+    width: 200px;
 }
 
-.js{
-    color: aqua;
+h2{
 
+    color: rgba(0, 255, 200, 1);
+}
+
+.hex{
+    color: #0000ff;
+    margin-bottom: 20px;
+}
+
+
+
+a{
+    font-size: 32px;
+    text-decoration: none;
+    background-color: #00ff00;
+    color: #ff0000;
+    border-radius: 10px 20px;
+
+}
+
+
+.transparent{
+    margin-bottom: 23px;
+    color: transparent;
 }
