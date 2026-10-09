@@ -1,0 +1,43 @@
+h1{
+    color: red;  
+}
+h1:hover{
+    background-color: #00ffff;
+    color: #000;
+}
+
+p{
+    color: #00ffff;
+
+}
+
+.perent{
+    color: #ff0000;
+
+}
+
+.btn {
+    background-color: blue;
+    margin-bottom: 20px 
+}
+.btn:hover{
+    background-color: #ff0000;
+}
+
+.ytb:hover{
+    color: #000;
+
+}
+
+.sub{
+    background-color: #ff0000;
+    color: aliceblue;
+    border-radius: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+.sub:hover{
+    background-color: blue;
+}
+
