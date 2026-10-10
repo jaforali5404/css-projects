@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "jost";
+}
+h2{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 2px 2px 5px #000;
+
+}
+
+p{
+    font-size: 20px;
+    color: #fff;
+}
+section{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: top;
+    text-align: center;
+    background-image: url(images\ \(1\).jpg);
+    color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.3);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed;
+           
+}
+.section-1{
+    background-image: url(images\ \(2\).jpg);
+    color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.3);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed;
+
+}
+.section-2{
+    background-image: url(images\ \(3\).jpg);
+    color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.3);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed;
+
+}
+.section-3{
+    background-image: url(images\ \(4\).jpg);
+    color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.3);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed;
+
+}
