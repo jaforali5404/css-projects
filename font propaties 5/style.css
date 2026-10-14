@@ -1,10 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&family=Playwrite+DE+SAS+Guides&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 body{
     background-color: azure;
+    display: grid;
+    place-items: center;
 }
 h1{
-    color: red;  
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "Urbanist", sans-serif;
+    color: red; 
+    font-size: 54px; 
+    font-weight: 400;
+    font-style: italic;
+    font-variant: small-caps;
 }
 h1:hover{
     background-color: #00ffff;
     color: #000;
+}
+.hero-section{
+    width: 50%;
+}
+p{
+   font-family: "Playwrite DE SAS Guides", cursive;
+   font-size: 24px;
+   font-weight: 400;
+}
+
+li{
+    font-family: "Urbanist", sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+a{
+    font-family: "Urbanist", sans-serif;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 400;
 }
