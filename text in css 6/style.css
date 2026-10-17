@@ -1,0 +1,52 @@
+body{
+    background-color: hsl(0, 0, 94);
+    display: grid;
+    place-items: center;
+    font-family: "Urbanist",sans-serif;
+}
+
+.hero-section{
+    width: 50%;
+}
+
+h1{
+    font-family: "Urbanist", sans-serif;
+    background-color: burlywood;
+    color: red;
+    font-size: 54px;
+    font-weight: 400;
+    text-align: left;
+    text-decoration-line: underline;
+    -moz-text-decoration-line: underline;
+    text-decoration-color: green;
+    -moz-text-decoration-color: green;
+    text-decoration-thickness: 10px;
+    text-decoration-style: solid;
+    -moz-text-decoration-style: solid;
+    text-transform: capitalize;
+    text-shadow: 3px 3px 1px #000;
+}
+h1:hover{
+    color: blue;
+}
+
+p{
+    color: #ff00ff;
+    letter-spacing: 1.6px;
+    white-space: 2px;
+    line-height: 1.5;
+    /* white-space: nowrap; */
+}
+
+li{
+    font-size: 34px;
+    color: blue;
+}
+
+.hero-section a {
+    text-decoration: none;
+    background-color: aliceblue;
+    font-size: 18px;
+    font-weight: 400;
+    color: red;
+}
