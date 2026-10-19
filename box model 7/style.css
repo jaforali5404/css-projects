@@ -1,0 +1,28 @@
+body{
+    background-color: azure;
+}
+.border-section{
+    width: 400px;
+    background-color: rgb(104, 104, 202);
+    color: #fff;
+    /* border-top-width: 5px solid orangered; */
+    /* border: 15px solid red; */
+    border-width: 15px;
+    border-style: solid dotted dashed double;
+    border-color: red green yellow darkturquoise;
+    border-radius: 20px 40px;
+
+}
+
+.border-section p{
+    margin: 10px;
+}
+
+div{
+    margin-top: 20px;
+    height: 200px;
+    width: 400px;
+    background-color: burlywood;
+    border-radius: 20px 30px 40px 60px;
+
+}
