@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;box-sizing: border-box;
+}
+h1{
+    width: 100%;
+    height: 100vh;
+    /* background-image: radial-gradient(
+        circle, red, yellow, green
+    ); */
+     /* background-image: radial-gradient(
+        ellipse, red, yellow, green
+    ); */
+     /* background-image: radial-gradient(ellipse, red 30%, blue 50%, yellow 40%);  */
+      /* background-image: repeating-radial-gradient( red 30%, blue 50%, yellow 40%); */
+    background: radial-gradient(
+        circle at center,
+        red 20%,
+        yellow 34%,
+        green 40%,
+        #ffff 50%,
+        #000000 30%
+    );
+
+
+}
