@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "urbanist", sans-serif;
+}
+
+body {
+    padding: 5rem 10rem;
+}
+
+#main-heading {
+    color: #0c0a81;
+    font-size: 36px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.parant-div {
+    width: 1000px;
+    height: 800px;
+    color: #fff;
+    background: linear-gradient( to right, #1d2f2f, #ff11ff);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 15px;
+}
+
+
+.child {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient( to right, #091414, #3e4472);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 4px 12px;
+    display: grid;
+    place-items: center;
+    font-size: 32px;
+    color: #e90606;
+
+}
+
+.parant-div {
+    position: relative;
+    /* margin: 200px; */
+    left: 200px;
+}
+
+.child {
+    position: absolute;
+}
+
+.child-2 {
+    top: 0;
+    right: 0;
+}
+
+.child-3 {
+    left: 0;
+    bottom: 0;
+}
+
+.child-4 {
+    right: 0;
+    bottom: 0;
+}
+
+/* child width=(1000-150)/2=425
+child height=(800-150)/2=325 */
+
+.child-5 {
+    /* left: 425px;
+    top: 325px; */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: -50%;
+    -moz-transform: -50%;
+    -ms-transform: -50%;
+    -o-transform: -50%;
+}
+
+.child-6 {
+    color: #fff;
+    left: 50%;
+    position: fixed;
+}
+
