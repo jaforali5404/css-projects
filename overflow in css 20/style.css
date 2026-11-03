@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5;
+    font-family: "urbanist",sans-serif;
+}
+
+body {
+    display: grid;
+    place-items: center;
+}
+
+#main-heading {
+    font-size: 6.2rem;
+    color: #1e1403;
+    margin: 3rem 0;
+}
+
+p {
+    line-height: 40px;
+    font-size: 2rem;
+}
+
+.overflow-div {
+    width: 600px;
+    height: 300px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border: 5px solid green;
+    padding: 10px;
+    word-spacing: 1px;
+    /* overflow: auto; */
+    overflow: scroll;
+    overflow-y: scroll;
+    /* overflow: hidden; */
+    /* overflow: visible; */
+}
+
+.overflow-div-2{
+    width: 600px;
+    height: 300px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 12px 24px 0px,rgba(0, 0, 0, 0.58) 0px 12px 5px 1px;
+    border: 5px solid rgb(202, 8, 8);
+    padding: 10px;
+    overflow: auto;
+    white-space: nowrap;
+}
