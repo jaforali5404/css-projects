@@ -1,0 +1,114 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 32px;
+    font-family: "urbanist", sans-serif;
+}
+
+body {
+    background-color: #080a0c;
+    color: azure;
+    height: 120vh;
+}
+
+.containar {
+    height: 120vh;
+    max-width: 1320px;
+    padding: 64px 0;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    align-items: center;
+    gap: 64px;
+}
+
+.grid-two-colum {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    position: relative;
+}
+
+.hero-content h1::before {
+    /* content: "jafor khan"; */
+    content: "\f121";
+    font-family: "Font Awesome 6 Free";
+    position: absolute;
+    top: -30px;
+    font-size: 14px;
+    letter-spacing: 5px;
+    color: brown;
+
+}
+
+.hero-content h1::after {
+    content: "";
+    position: absolute;
+    border: 2px solid coral;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+}
+
+.hero-content p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 20px 040px 0;
+
+}
+
+.hero-content p::first-letter {
+    font-size: 22px;
+    color: red;
+    font-weight: bold;
+}
+
+.hero-content p::first-line {
+    font-size: 22px;
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.hero-content p::selection {
+    background-color: blue;
+    color: beige;
+}
+
+img {
+    max-width: 80%;
+    height: auto;
+}
+
+a {
+    background-color: transparent;
+    display: inline-block;
+    padding: 12px 32px;
+    text-decoration: none;
+    border-radius: 05px;
+    margin-top: 50px;
+    font-size: 24px;
+    border: 1px solid #fff;
+    color: #fff;
+    width: 200px;
+    text-align: center;
+}
+
+/* .hero-content a:hover {
+    background-color: #fff;
+    color: #080a0c;
+    width: 300px;
+} */
