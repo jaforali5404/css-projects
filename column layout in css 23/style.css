@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e78087;
+    display: grid;
+    place-items: center;
+}
+
+.hero-section {
+    font-family: "urbanist", sans-serif;
+    font-size: 54px;
+    font-weight: 600;
+    text-align: left;
+    text-decoration-style: dotted;
+    -moz-text-decoration-style: dotted;
+    text-decoration-color: #5e5c5c;
+    -moz-text-decoration-color: #5e5c5c;
+    text-decoration-thickness: 2px;
+    margin-bottom: 24px;
+}
+
+p {
+    font-family: "urbanist", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    word-spacing: 1.6px;
+    line-height: 1.6;
+}
+
+p {
+    column-count: 3;
+    column-rule: 3px solid red; 
+    /* column-rule-color: red;
+    column-rule-style: dotted;
+    column-rule-width: 5px; */
+    column-gap: 50px;
+    text-align: justify;
+}
