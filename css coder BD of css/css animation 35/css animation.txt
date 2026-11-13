@@ -1,0 +1,171 @@
+CSS Animation ব্যবহার করে কোনো HTML উপাদানকে JavaScript ছাড়াই এক অবস্থা থেকে অন্য অবস্থায় অ্যানিমেট বা পরিবর্তন করা যায়। অ্যানিমেশন তৈরি করতে মূলত দুটি জিনিস লাগে: @keyframes (অ্যানিমেশনের ফ্রেম বা ধাপ সেট করতে) এবং Animation Properties (উপাদানটিতে অ্যানিমেশন কীভাবে চলবে তা নিয়ন্ত্রণ করতে)।
+
+নিচে CSS Animation-এর সকল Property, Attribute/Values এবং বাস্তব উদাহরণসহ বিস্তারিত বর্ণনা দেওয়া হলো:
+
+১. @keyframes (অ্যানিমেশনের মূল ফ্রেম)
+অ্যানিমেশনের শুরু থেকে শেষ পর্যন্ত কী পরিবর্তন ঘটবে তা এখানে নির্ধারণ করা হয়।
+
+Values: from (বা 0%), to (বা 100%), এবং মধ্যবর্তী যেকোনো শতাংশ (যেমন: 25%, 50%)।
+
+CSS
+@keyframes slideAndFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+২. animation-name (অ্যানিমেশনের নাম)
+অ্যানিমেট করার জন্য কোন @keyframes-টি ব্যবহার করা হবে তা নির্ধারণ করে।
+
+Values: @keyframes-এ দেওয়া যেকোনো কাস্টম নাম, অথবা none (ডিফল্ট)।
+
+CSS
+.box {
+  animation-name: slideAndFade;
+}
+৩. animation-duration (অ্যানিমেশনের সময়কাল)
+অ্যানিমেশনটি শুরু থেকে শেষ হতে মোট কত সময় নেবে তা নির্ধারণ করে।
+
+Values: সেকেন্ড (s) বা মিলিসেকেন্ড (ms) (ডিফল্ট: 0s)।
+
+CSS
+.box {
+  animation-duration: 3s; /* ৩ সেকেন্ড ধরে চলবে */
+}
+৪. animation-timing-function (গতি বা স্পিড কার্ভ)
+অ্যানিমেশনটির গতির পরিবর্তন (শুরু, মাঝপথ ও শেষে) কেমন হবে তা নির্ধারণ করে।
+
+Values:
+
+ease (ডিফল্ট): ধীরে শুরু হয়, মাঝে দ্রুত হয়, শেষে আবার ধীর গতিতে থামে।
+
+linear: পুরো সময় সমগতিতে চলে।
+
+ease-in: ধীর গতিতে শুরু হয়।
+
+ease-out: ধীর গতিতে শেষ হয়।
+
+ease-in-out: ধীর গতিতে শুরু এবং শেষ দুটোই হয়।
+
+cubic-bezier(n,n,n,n): নিজের ইচ্ছামতো কাস্টম গতির গ্রাফ তৈরি করা যায়।
+
+steps(int): অ্যানিমেশনকে স্মুথ না করে কয়েকটি ধাপে (Step-by-step) রূপান্তর করে।
+
+CSS
+.box {
+  animation-timing-function: ease-in-out;
+}
+৫. animation-delay (অ্যানিমেশন শুরুর বিরতি)
+উপাদানটি লোড হওয়ার কতক্ষণ পর অ্যানিমেশন শুরু হবে তা নির্ধারণ করে।
+
+Values:
+
+0s (ডিফল্ট): সাথে সাথেই শুরু হয়।
+
+ধন্যাত্মক সময় (2s): ২ সেকেন্ড পর শুরু হবে।
+
+ঋণাত্মক সময় (-2s): অ্যানিমেশনটি আগেই ২ সেকেন্ড চলে গেছে ধরে নিয়ে মাঝপথ থেকে শুরু হবে।
+
+CSS
+.box {
+  animation-delay: 1s; /* ১ সেকেন্ড অপেক্ষা করে শুরু হবে */
+}
+৬. animation-iteration-count (অ্যানিমেশনের পুনরাবৃত্তি)
+অ্যানিমেশনটি মোট কতবার চলবে তা নির্ধারণ করে।
+
+Values:
+
+সংখ্যা (যেমন: 1, 3, 5.5) (ডিফল্ট: 1)।
+
+infinite: অ্যানিমেশনটি থামবে না, আজীবন চলতে থাকবে।
+
+CSS
+.box {
+  animation-iteration-count: infinite; /* অনবরত চলতে থাকবে */
+}
+৭. animation-direction (গতিপথের দিক)
+অ্যানিমেশনটি সামনের দিকে চলবে নাকি উল্টো দিকে চলবে তা ঠিক করে।
+
+Values:
+
+normal (ডিফল্ট): 0% থেকে 100%-এর দিকে স্বাভাবিকভাবে চলবে।
+
+reverse: উল্টো দিকে চলবে (100% থেকে 0%-এর দিকে)।
+
+alternate: প্রথমে সোজা (0% থেকে 100%), পরের বার উল্টো (100% থেকে 0%) চলবে।
+
+alternate-reverse: প্রথমে উল্টো, পরের বার সোজাভাবে চলবে।
+
+CSS
+.box {
+  animation-direction: alternate;
+}
+৮. animation-fill-mode (অ্যানিমেশন শুরু ও শেষের স্টাইল ধরে রাখা)
+অ্যানিমেশন শুরু হওয়ার আগে বা শেষ হওয়ার পরে উপাদানটির স্টাইল কেমন থাকবে তা নির্ধারণ করে।
+
+Values:
+
+none (ডিফল্ট): অ্যানিমেশন শেষে উপাদানটি তার মূল CSS স্টাইলে ফিরে আসবে।
+
+forwards: অ্যানিমেশন শেষ হওয়ার পর 100%-এর স্টাইলটি ধরে রাখবে।
+
+backwards: animation-delay চলাকালীন সময়েই 0%-এর স্টাইলটি প্রয়োগ করে রাখবে।
+
+both: forwards এবং backwards দুটোর কাজই একসাথে করবে।
+
+CSS
+.box {
+  animation-fill-mode: forwards; /* অ্যানিমেশন শেষে শেষ ফ্রেমে আটকে থাকবে */
+}
+৯. animation-play-state (অ্যানিমেশন চালু বা বন্ধ রাখা)
+চলমান অ্যানিমেশনকে থামিয়ে (Pause) দেওয়া বা আবার চালু (Play) করার জন্য এটি ব্যবহৃত হয়।
+
+Values:
+
+running (ডিফল্ট): অ্যানিমেশন চলতে থাকবে।
+
+paused: অ্যানিমেশনটি সাময়িকভাবে থেমে যাবে।
+
+CSS
+/* মাউস কার্সার বক্সের ওপর নিলে অ্যানিমেশন থেমে যাবে */
+.box:hover {
+  animation-play-state: paused;
+}
+১০. animation (Shorthand Property)
+উপরের সবকটি প্রপার্টি আলাদা আলাদা না লিখে মাত্র একটি লাইনে লিখার জন্য animation শর্টহ্যান্ড ব্যবহার করা হয়।
+
+ক্রম বা সিনট্যাক্স:
+animation: [name] [duration] [timing-function] [delay] [iteration-count] [direction] [fill-mode] [play-state];
+
+CSS
+.box {
+  /* নাম: slideAndFade, সময়: 3s, স্পিড: ease, ডিলে: 1s, পুনরাবৃত্তি: infinite, দিক: alternate */
+  animation: slideAndFade 3s ease 1s infinite alternate;
+}
+একসাথে একটি বাস্তব উদাহরণ
+নিচে একটি লোডার অ্যানিমেশনের সম্পূর্ণ কোড দেওয়া হলো যা অনবরত ঘুরতে থাকবে:
+
+CSS
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  
+  /* Shorthand animation property */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}

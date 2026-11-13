@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Login Form</title>
+    
+    <!-- সোশ্যাল মিডিয়া আইকনগুলোর (Google, Apple, Facebook) জন্য Font Awesome CDN লিংক -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Reset: সমস্ত ট্যাগের ডিফল্ট মার্জিন-প্যাডিং জিরো করা এবং প্যাডিং হিসাব সহজ করা */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* পুরো পেজের মূল ব্যাকগ্রাউন্ড ও পজিশনিং CSS */
+        body {
+            display: flex; /* ফ্লেক্সবক্স চালু করা */
+            justify-content: center; /* হরাইজন্টালি/আড়াআড়িভাবে পেজের একদম মাঝখানে রাখা */
+            align-items: center; /* ভার্টিক্যালি/লম্বালম্বিভাবে পেজের একদম মাঝখানে রাখা */
+            min-height: 100vh; /* পুরো ডিভাইসের স্ক্রিন হাইট (100 Viewport Height) নেয়া */
+            background: linear-gradient(135deg, #0d0f28, #181b40, #0a0c1b); /* ডার্ক নাইট থিম গ্রেডিয়েন্ট কালার */
+            overflow: hidden; /* ব্যাকগ্রাউন্ডের গোল শেপগুলো স্ক্রিনের বাইরে গেলেও যেন স্ক্রোলবার না আসে */
+            position: relative; /* ভেতরের absolute উপাদানগুলোকে বডির সাপেক্ষে ধরে রাখা */
+        }
+
+        /* ব্যাকগ্রাউন্ডের ব্লার অবজেক্ট বা থ্রিডি শেপগুলোর সাধারণ প্রপার্টি */
+        .shape {
+            position: absolute; /* স্ক্রিনের যেকোনো নির্দিষ্ট জায়গায় বসানোর সুবিধা দেওয়া */
+            border-radius: 50%; /* শেপগুলোকে গোলাকার করার জন্য */
+            filter: blur(50px); /* ব্লার/ঘোলা ইফেক্ট তৈরি করা যা পিছনের কালার গ্লো তৈরি করে */
+            z-index: 1; /* শেপগুলো যেন লগইন ফর্মে নিচে থাকে (কম লেয়ার) */
+        }
+
+        /* ১ম অবজেক্ট (সবুজ কালার শেপ - বামে উপরে) */
+        .shape-1 {
+            top: 10%; /* ওপর থেকে ১০% নিচে */
+            left: 20%; /* বাম থেকে ২০% ডানে */
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #7cf03d, #2bbd15); /* সবুজ গ্রেডিয়েন্ট */
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* আঁকাবাঁকা অর্গানিক শেপ তৈরি */
+        }
+
+        /* ২য় অবজেক্ট (গোলাপী/লাল কালার শেপ - ডানে নিচে) */
+        .shape-2 {
+            bottom: 10%; /* নিচ থেকে ১০% ওপরে */
+            right: 15%; /* ডান থেকে ১৫% বামে */
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #ff0055, #ff5000); /* লাল-গোলাপী গ্রেডিয়েন্ট */
+        }
+
+        /* ৩য় অবজেক্ট (নীল কালার শেপ - বামে নিচে) */
+        .shape-3 {
+            bottom: 15%; /* নিচ থেকে ১৫% ওপরে */
+            left: 10%; /* বাম থেকে ১০% ডানে */
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #00d2ff, #0066ff); /* সায়ান-নীল গ্রেডিয়েন্ট */
+        }
+
+        /* মূল গ্লাসমরফিজম (Glassmorphism) লগইন বক্স */
+        .login-card {
+            position: relative;
+            z-index: 2; /* ব্যাকগ্রাউন্ডের শেপগুলোর ওপর ফর্মটি রাখার জন্য বেশি লেয়ার ভ্যালু (2) */
+            width: 380px; /* কার্ডের চওড়া */
+            padding: 40px 30px; /* ভেতরে ওপর-নিচে ৪০px এবং ডানে-বামে ৩০px জায়গা ছেড়ে দেওয়া */
+            
+            /* --- আসল কাচের (Glass Effect) ম্যাজিক --- */
+            background: rgba(255, 255, 255, 0.05); /* হালকা সাদা রঙ উইথ ৯৫% ট্রান্সপারেন্সি */
+            backdrop-filter: blur(15px); /* পিছনের অবজেক্টগুলোকে কাচের পেছনে ঝাপসা/ব্লার দেখানোর জন্য */
+            -webkit-backdrop-filter: blur(15px); /* স্যফারি (Safari) ব্রাউজারের সাপোর্টের জন্য */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* কাচের ধার বা এজ বোঝাতে সূক্ষ্ম বর্ডার */
+            border-radius: 20px; /* কার্ডের চারপাশ গোল বা রাউন্ড করা */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); /* ভাসমান অনুভূতি দিতে নিচে ডার্ক শ্যাডো */
+            color: #fff; /* কার্ডের ভেতরের সমস্ত লেখার রঙ সাদা */
+        }
+
+        /* "Login" শিরোনাম টাইটেল */
+        .login-card h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px; /* টাইটেলের নিচে জায়গা তৈরি করা */
+            color: #ffffff;
+        }
+
+        /* প্রতিটি ইনপুট গ্রুপের সেকশন (Label + Input Box) */
+        .input-group {
+            margin-bottom: 20px; /* প্রতি গ্রুপের মাঝে ফাঁকা জায়গা */
+        }
+
+        /* ইনপুটের ওপরে লেখার লেবেল (Email, Password) */
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            color: #b3b3b3; /* হালকা ছাই রঙ */
+            margin-bottom: 8px; /* লেবেল থেকে ইনপুট বক্সের দূরত্ব */
+        }
+
+        /* ইমেইল ও পাসওয়ার্ড লেখার ইনপুট ফিল্ড */
+        .input-group input {
+            width: 100%; /* পুরো উইডথ নেওয়া */
+            padding: 12px 15px; /* ইনপুট বক্সের ভেতরে লেখার জায়গা বাড়ানো */
+            background: rgba(255, 255, 255, 0.9); /* ইনপুট বক্সের প্রায় সাদা ব্যাকগ্রাউন্ড */
+            border: none; /* ডিফল্ট বর্ডার বন্ধ করা */
+            outline: none; /* ক্লিকে নীল বর্ডার আউটলাইন বন্ধ করা */
+            border-radius: 6px; /* ইনপুট বক্সের কোণা একটু রাউন্ড করা */
+            font-size: 14px;
+            color: #333; /* লেখার রঙ কালচে রাখা */
+        }
+
+        /* "Forgot Password?" লিংক */
+        .forgot-pass {
+            display: block;
+            text-align: left;
+            font-size: 11px;
+            color: #a0a0a0;
+            text-decoration: none; /* লিংকের তলার আন্ডারলাইন বাদ দেওয়া */
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* পাসওয়ার্ড লিংকে মাউস নিলে কালার চেঞ্জ */
+        .forgot-pass:hover {
+            color: #fff;
+        }
+
+        /* মূল লাল রঙের "Sign in" বাটন */
+        .btn-signin {
+            width: 100%;
+            padding: 12px;
+            background: #e62e43; /* লাল কালার */
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer; /* মাউস নিলে হাতের আইকন আসা */
+            transition: background 0.3s ease; /* কালার পরিবর্তনের জন্য স্মুথ অ্যানিমেশন */
+        }
+
+        /* বাটনটি হোভার (মাউস পয়েন্টার নিলে) করলে ডার্ক হওয়া */
+        .btn-signin:hover {
+            background: #cc2538;
+        }
+
+        /* "or continue with" লেখার সেকশন */
+        .or-continue {
+            text-align: center;
+            font-size: 11px;
+            color: #a0a0a0;
+            margin: 20px 0;
+        }
+
+        /* সোশ্যাল লগইন আইকন বাটনের লেআউট (Google, Apple, Facebook) */
+        .social-login {
+            display: flex; /* তিন বাটনকে এক লাইনে আনা */
+            justify-content: space-between;
+            gap: 10px; /* বাটনগুলোর মধ্যে ১০ পিক্সেল ফাকা রাখা */
+            margin-bottom: 20px;
+        }
+
+        /* প্রতিটি সোশ্যাল বাটন */
+        .social-btn {
+            flex: 1; /* তিনটি বাটনই সমান জায়গা নেবে */
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9); /* সাদা ব্যাকগ্রাউন্ড */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center; /* আইকন সেন্টারে রাখা */
+            align-items: center;
+            font-size: 16px;
+            color: #333;
+            transition: background 0.3s;
+        }
+
+        /* সোশ্যাল বাটনে মাউস নিলে ব্যাকগ্রাউন্ড গাঢ় সাদা হওয়া */
+        .social-btn:hover {
+            background: #ffffff;
+        }
+
+        /* একদম নিচের রেজিস্টার টেক্সট */
+        .register-text {
+            text-align: center;
+            font-size: 12px;
+            color: #a0a0a0;
+        }
+
+        /* রেজিস্টার লিংকের স্টাইল */
+        .register-text a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* রেজিস্টার লিংকে মাউস নিলে আন্ডারলাইন আসা */
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ব্যাকগ্রাউন্ডের অবজেক্ট ও থ্রিডি শেপ তৈরি (HTML ট্যাগ) -->
+    <div class="shape shape-1"></div> <!-- সবুজ অবজেক্ট -->
+    <div class="shape shape-2"></div> <!-- লাল-গোলাপী অবজেক্ট -->
+    <div class="shape shape-3"></div> <!-- নীল অবজেক্ট -->
+
+    <!-- মূল গ্লাস লগইন বক্স স্টার্ট -->
+    <div class="login-card">
+        <h2>Login</h2>
+        
+        <!-- ইনপুট ফর্ম স্টার্ট -->
+        <form>
+            <!-- ইমেইল ইনপুট গ্রুপ -->
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <!-- পাসওয়ার্ড ইনপুট গ্রুপ -->
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <!-- ফরগট পাসওয়ার্ড লিংক -->
+                <a href="#" class="forgot-pass">Forgot Password?</a>
+            </div>
+
+            <!-- সাবমিট বাটন -->
+            <button type="submit" class="btn-signin">Sign in</button>
+        </form>
+
+        <!-- ডিভাইডার টেক্সট -->
+        <p class="or-continue">or continue with</p>
+
+        <!-- সোশ্যাল মিডিয়া বাটন গ্রুপ -->
+        <div class="social-login">
+            <!-- গুগল বাটন -->
+            <button class="social-btn"><i class="fab fa-google"></i></button>
+            <!-- অ্যাপল বাটন -->
+            <button class="social-btn"><i class="fab fa-apple"></i></button>
+            <!-- ফেসবুক বাটন -->
+            <button class="social-btn"><i class="fab fa-facebook-f"></i></button>
+        </div>
+
+        <!-- রেজিস্ট্রেশন লিংক টেক্সট -->
+        <p class="register-text">
+            Don't have an account yet? <a href="#">Register for free</a>
+        </p>
+    </div>
+    <!-- মূল গ্লাস লগইন বক্স এন্ড -->
+
+</body>
+</html>

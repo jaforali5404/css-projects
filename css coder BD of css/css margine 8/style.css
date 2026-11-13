@@ -1,0 +1,25 @@
+.text1{
+    height: 120px;
+    width: 120px;
+    background-color: red;
+    margin: 20px;
+}
+.text2{
+    height: 120px;
+    width: 120px;
+    background-color: green;
+    /* margin-bottom: 20;
+    margin-left: 20px;
+    margin-top: 30px; */
+    /* sudu matro akta margin bebohar kore akta top left right bottom er kaj kora jay */
+    /* margin: 10px 20px 15px 12px; */
+    /* margine left and right auto korle margin ta center a chole asbe */
+    margin: 20px auto;
+
+}
+.text3{
+    height: 120px;
+    width: 120px;
+    background-color: blue;
+    margin-left: 20px;
+}

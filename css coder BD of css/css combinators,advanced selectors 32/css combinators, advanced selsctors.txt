@@ -1,0 +1,247 @@
+CSS Selector-এর একটি গুরুত্বপূর্ণ অংশ হলো Combinators এবং Advanced Selectors। এটি দিয়ে কোনো এলিমেন্টকে কতখানি নির্দিষ্টভাবে (specific) স্টাইল করা যাবে তা ঠিক করা হয়।
+
+নিচে CSS Combinators এবং Advanced Selectors-এর বিভিন্ন ধরণ, তাদের প্রোপার্টি (Property), এলিমেন্ট (Element) এবং ভ্যালু (Value) সহজ ব্যাখ্যা ও উদাহরণসহ দেওয়া হলো:
+
+১. CSS Combinators (কম্বিনেটর)
+কম্বিনেটর দিয়ে দুটি বা তার বেশি সিলেক্টরের মধ্যকার সম্পর্ক নির্ধারণ করা হয়।
+
+ক. Descendant Selector (space)
+প্যারেন্ট (Parent) এলিমেন্টের ভেতরে থাকা সকল নির্দিষ্ট চাইল্ড বা সাব-চাইল্ড এলিমেন্টকে সিলেক্ট করে।
+
+CSS
+div p {
+  color: blue;
+}
+Element: div (Parent) এবং p (Child/Descendant)
+
+Property: color
+
+Value: blue
+
+কাজ: <div>-এর ভেতরের সকল <p> ট্যাগ (Direct বা Indirect) নীল রঙের হবে।
+
+খ. Child Selector (>)
+প্যারেন্ট এলিমেন্টের শুধুমাত্র Direct Child (সরাসরি সন্তান) এলিমেন্টকে সিলেক্ট করে।
+
+CSS
+ul > li {
+  list-style-type: square;
+}
+Element: ul (Parent) এবং li (Direct Child)
+
+Property: list-style-type
+
+Value: square
+
+কাজ: <ul>-এর একদম ভেতরে থাকা সরাসরি <li> এলিমেন্টগুলোর লিস্টের আইকন স্কয়ার (Square) হবে।
+
+গ. Adjacent Sibling Selector (+)
+কোনো এলিমেন্টের ঠিক পর মুহূর্তেই থাকা ভাই/বোন (Next Immediate Sibling) এলিমেন্টকে সিলেক্ট করে।
+
+CSS
+h2 + p {
+  margin-top: 0px;
+}
+Element: h2 এবং এর ঠিক পরের p
+
+Property: margin-top
+
+Value: 0px
+
+কাজ: <h2>-এর ঠিক পরেই যেই <p> ট্যাগটি থাকবে, সেটার উপরের মার্জিন জিরো হয়ে যাবে।
+
+ঘ. General Sibling Selector (~)
+কোনো এলিমেন্টের পর থেকে শুরু করে একই প্যারেন্টের অধীনে থাকা পরবর্তী সকল ভাই/বোন (Siblings) এলিমেন্টকে সিলেক্ট করে।
+
+CSS
+h2 ~ p {
+  font-family: sans-serif;
+}
+Element: h2 এবং তার পরবর্তী সকল p
+
+Property: font-family
+
+Value: sans-serif
+
+কাজ: <h2>-এর পর যতগুলো <p> এলিমেন্ট আছে, সবার ফন্ট পরিবর্তন হয়ে sans-serif হবে।
+
+২. Attribute Selectors (এট্রিবিউট সিলেক্টর)
+এলিমেন্টের বিশেষ কোনো এট্রিবিউট (Attribute) বা তার ভ্যালুর ওপর ভিত্তি করে এলিমেন্ট সিলেক্ট করে।
+
+ক. [attribute="value"] (Exact Match)
+নির্দিষ্ট এট্রিবিউট এবং ঠিক তার ভ্যালুর সাথে মিললে সিলেক্ট করে।
+
+CSS
+input[type="text"] {
+  border: 2px solid gray;
+}
+Element: input
+
+Attribute & Value Match: [type="text"]
+
+Property: border
+
+Value: 2px solid gray
+
+কাজ: শুধু Text Input-এর বর্ডার ২ পিক্সেল ধূসর হবে।
+
+খ. [attribute^="value"] (Starts With Match)
+এট্রিবিউটের ভ্যালু নির্দিষ্ট শব্দ দিয়ে শুরু হলে সিলেক্ট করে।
+
+CSS
+a[href^="https"] {
+  color: green;
+}
+Element: a (Anchor tag)
+
+Attribute & Value Match: [href^="https"] (https দিয়ে শুরু হওয়া লিংক)
+
+Property: color
+
+Value: green
+
+কাজ: সেকিউর সাইটের লিংকগুলো (https) সবুজ রঙের হবে।
+
+গ. [attribute$="value"] (Ends With Match)
+এট্রিবিউটের ভ্যালু নির্দিষ্ট শব্দ দিয়ে শেষ হলে সিলেক্ট করে।
+
+CSS
+a[href$=".pdf"] {
+  background-color: yellow;
+}
+Element: a
+
+Attribute & Value Match: [href$=".pdf"] (.pdf দিয়ে শেষ হওয়া লিংক)
+
+Property: background-color
+
+Value: yellow
+
+কাজ: যেসব লিংকে PDF ফাইল যুক্ত আছে, তাদের ব্যাকগ্রাউন্ড হলুদ হবে।
+
+৩. Advanced Pseudo-classes (অ্যাডভান্সড সিউডো-ক্লাস)
+এলিমেন্টের বিশেষ অবস্থা বা অবস্থানের ওপর ভিত্তি করে স্টাইল করার উপায়।
+
+ক. Structural Pseudo-classes (:nth-child)
+অর্ডার বা সংখ্যার ওপর নির্ভর করে এলিমেন্ট সিলেক্ট করা যায়।
+
+CSS
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+Element: tr (Table row)
+
+Pseudo-class: :nth-child(even) (জোড় নম্বরের রো)
+
+Property: background-color
+
+Value: #f2f2f2
+
+কাজ: টেবিলের প্রতিটি জোড় নম্বর রোর (Row 2, 4, 6...) ব্যাকগ্রাউন্ড হালকা ধূসর করবে।
+
+খ. Negation Pseudo-class (:not())
+কোনো নির্দিষ্ট ক্লাস বা টাইপকে বাদ দিয়ে বাকি সব এলিমেন্টকে সিলেক্ট করে।
+
+CSS
+button:not(.primary) {
+  opacity: 0.7;
+}
+Element: button (যাদের .primary ক্লাস নেই)
+
+Property: opacity
+
+Value: 0.7
+
+কাজ: .primary ক্লাস ছাড়া বাকি সব বাটন কিছুটা ঝাপসা (0.7 Opacity) দেখাবে।
+
+গ. Relational Pseudo-class (:has()) — Modern CSS
+প্যারেন্ট এলিমেন্টের ভেতরে নির্দিষ্ট কোনো চাইল্ড এলিমেন্ট আছে কি না তা পরীক্ষা করে প্যারেন্টকে সিলেক্ট করে।
+
+CSS
+card:has(img) {
+  display: flex;
+}
+Element: .card (যার ভেতরে একটি <img> ট্যাগ আছে)
+
+Property: display
+
+Value: flex
+
+কাজ: কোনো কার্ডের ভেতর ইমেজ থাকলে সেই কার্ডটি flexbox এ রূপান্তরিত হবে।
+
+
+
+******
+
+
+
+CSS-এ Combinator এবং Advanced Selector ব্যবহার করার জন্য Parent, Child, এবং Sibling ট্যাগ বা এলিমেন্টের ধারণা বোঝা অত্যন্ত জরুরি। এটি মুলত HTML ট্যাগগুলোর পারস্পরিক পারিবারিক সম্পর্কের (Family Relationship) মতো।১. Parent, Child এবং Sibling ট্যাগ কী?HTML ডকুমেন্টে একটি ট্যাগের ভেতরে যখন আরেকটি ট্যাগ থাকে, তখন তাদের সম্পর্কের ভিত্তিতে এই নামগুলো দেওয়া হয়:HTML<div class="container">
+    <h2>শিরোনাম</h2>
+    <p>প্রথম প্যারাগ্রাফ</p>
+    <p>দ্বিতীয় প্যারাগ্রাফ</p>
+</div>
+Parent (প্যারেন্ট): যে ট্যাগটি অন্য কোনো ট্যাগকে নিজের ভেতরে ধারণ করে বা ঘিরে রাখে।উদাহরণ: উপরের কোডে <div> হলো Parent ট্যাগ।Child (চাইল্ড): যে ট্যাগগুলো কোনো প্যারেন্ট ট্যাগের সরাসরি ভেতরে থাকে।উদাহরণ: <h2> এবং দুটি <p> ট্যাগ হলো <div>-এর Child।Sibling (সিবলিং / ভাই-বোন): যেসব ট্যাগ একই প্যারেন্ট ট্যাগের ভেতরে পাশাপাশি অবস্থান করে।উদাহরণ: <h2> এবং <p> ট্যাগগুলো একে অপরের Sibling (কারণ সবার প্যারেন্ট একই <div>)।২. CSS Combinators-এ Parent, Child এবং Sibling-এর কাজ কী?CSS Combinators দিয়ে আমরা ঠিক করে দিই যে, প্যারেন্টের ভেতরের নির্দিষ্ট চাইল্ড বা পাশাপাশি থাকা সিবলিং ট্যাগগুলোকে কীভাবে স্টাইল করা হবে।ক. Child Selector (>)সম্পর্ক: Parent এবং Direct Child (সরাসরি সন্তান)।কাজ: এটি কেবল প্যারেন্টের একদম সরাসরি ভেতরের চাইল্ড ট্যাগকে সিলেক্ট করে। চাইল্ডের ভেতরের অন্য কোনো ট্যাগকে (Grandchild) সিলেক্ট করে না।কোড:CSSdiv > p {
+  color: red;
+}
+ব্যাখ্যা: <div>-এর সরাসরি ভেতরে থাকা <p> ট্যাগ লাল রঙের হবে।খ. Descendant Selector (space / স্পেস)সম্পর্ক: Parent এবং Any Child/Grandchild (সন্তান বা নাতি-নাতনি)।কাজ: এটি প্যারেন্টের ভেতরে থাকা সকল নির্দিষ্ট ট্যাগকে সিলেক্ট করে, তা সরাসরি চাইল্ড হোক বা আরও ভেতরে থাকা কোনো ট্যাগ হোক।কোড:CSSdiv p {
+  color: blue;
+}
+ব্যাখ্যা: <div>-এর ভেতরে যেখানেই <p> ট্যাগ থাকবে, সবই নীল রঙের হবে।গ. Adjacent Sibling Selector (+)সম্পর্ক: Immediate Sibling (ঠিক পরবর্তী ভাই/বোন)।কাজ: নির্দিষ্ট কোনো ট্যাগের একদম ঠিক পরেই থাকা সিবলিং ট্যাগকে সিলেক্ট করে।কোড:CSSh2 + p {
+  font-weight: bold;
+}
+ব্যাখ্যা: <h2>-এর ঠিক পরেই যেই <p> ট্যাগটি রয়েছে, শুধু সেটি বোল্ড (Bold) হবে।ঘ. General Sibling Selector (~)সম্পর্ক: Any Subsequent Sibling (পরবর্তী সব ভাই/বোন)।কাজ: একটি নির্দিষ্ট ট্যাগের পর একই প্যারেন্টের অধীনে থাকা পরবর্তী সকল সিবলিং ট্যাগকে সিলেক্ট করে।কোড:CSSh2 ~ p {
+  color: green;
+}
+ব্যাখ্যা: <h2>-এর পরে যতগুলো <p> ট্যাগ একই লেভেলে আছে, সবগুলোর রঙ সবুজ হবে।৩. Advanced Selectors-এ এদের কাজ কী?অ্যাডভান্সড সিলেক্টরে প্যারেন্ট-চাইল্ডের অবস্থান গুনে বা সম্পর্ক দেখে স্টাইল করা হয়::nth-child(n): প্যারেন্টের কত নম্বর চাইল্ডকে স্টাইল করবেন তা ঠিক করে।CSS/* প্যারেন্টের ৩ নম্বর চাইল্ড যদি p হয়, তবে সেটি সিলেক্ট হবে */
+p:nth-child(3) { 
+  background-color: yellow; 
+}
+:has() (Parent Selector): এটি CSS-এর আধুনিক একটি সিলেক্টর। কোনো চাইল্ড ট্যাগের ওপর ভিত্তি করে তার Parent ট্যাগকে সিলেক্ট করে।CSS/* যে div-এর ভেতরে img ট্যাগ আছে, কেবল সেই div-এর বর্ডার রেড হবে */
+div:has(img) { 
+  border: 2px solid red; 
+}
+সংক্ষেপে মনে রাখার সহজ উপায়Selectorচিহ্নসম্পর্ককাজChild>Parent > Direct Childকেবল সরাসরি সন্তানকে ধরবেDescendant  (space)Parent Childভেতরের সকল সন্তান/নাতিকে ধরবেAdjacent Sibling+Tag + Next Siblingঠিক পরের সংলগ্ন ভাই/বোনকে ধরবেGeneral Sibling~Tag ~ All Siblingsপরের সকল ভাই/বোনকে ধরবে
+
+
+
+*******
+
+
+
+
+১. Combinator (কম্বিনেটর) কী?
+Combinator হলো এমন একটি চিহ্ন বা স্পেস, যা একাধিক সিলেক্টরের মধ্যে সম্পর্ক (Relationship) তৈরি করে।
+
+সহজ কথায়, HTML-এর ট্যাগগুলোর মধ্যে যেমন প্যারেন্ট (Parent), চাইল্ড (Child) বা সিবলিং (Sibling) সম্পর্ক থাকে, কম্বিনেটর সেই সম্পর্ক অনুযায়ী কোনো এলিমেন্টকে সিলেক্ট করতে সাহায্য করে।
+
+কেন ব্যবহার করা হয়: কোডে অতিরিক্ত Class বা ID যোগ না করেই সরাসরি কোনো নির্দিষ্ট ট্যাগের ভেতরের বা পরের ট্যাগকে স্টাইল করার জন্য।
+
+মূল ৪টি কম্বিনেটর:
+
+Descendant Selector (  - স্পেস): প্যারেন্টের ভেতরের সকল নির্দিষ্ট চাইল্ডকে ধরে।
+
+Child Selector (>): প্যারেন্টের শুধু সরাসরি (Direct) চাইল্ডকে ধরে।
+
+Adjacent Sibling Selector (+): নির্দিষ্ট ট্যাগের ঠিক পরবর্তী সিবলিং বা ভাই/বোনকে ধরে।
+
+General Sibling Selector (~): নির্দিষ্ট ট্যাগের পরবর্তী সকল সিবলিং বা ভাই/বোনকে ধরে।
+
+২. Advanced Selector (অ্যাডভান্সড সিলেক্টর) কী?
+Advanced Selector হলো CSS-এর এমন কিছু বিশেষ নিয়ম বা ফিচার, যার মাধ্যমে কেবল ট্যাগের নাম বা ক্লাসের ওপর নির্ভর না করে—এলিমেন্টের অবস্থান, এট্রিবিউট (Attribute), কিংবা বিশেষ অবস্থার ওপর ভিত্তি করে সিলেক্ট করা যায়।
+
+সহজ কথায়, সাধারণ সিলেক্টর দিয়ে যখন কোনো বিশেষ শর্ত অনুযায়ী এলিমেন্ট ধরা কঠিন হয়, তখন অ্যাডভান্সড সিলেক্টর ব্যবহার করা হয়।
+
+কেন ব্যবহার করা হয়: ডায়নামিক ডিজাইন, টেবিলের অল্টারনেট কালার বা কোনো বিশেষ লিংকে স্টাইল দেওয়ার জন্য।
+
+জনপ্রিয় অ্যাডভান্সড সিলেক্টরসমূহ:
+
+Attribute Selector: এলিমেন্টের টাইপ বা লিংকের ধরন দেখে কাজ করে। (যেমন: input[type="text"] বা a[href$=".pdf"])
+
+Pseudo-classes: এলিমেন্টের নির্দিষ্ট অবস্থান বা স্ট্যাটাস দেখে কাজ করে। (যেমন: :nth-child(), :not(), :hover)
+
+Parent / Relational Selector (:has()): ভেতরের চাইল্ড ট্যাগের উপস্থিতি দেখে তার মূল প্যারেন্ট ট্যাগকে সিলেক্ট করে।
+
+সংক্ষেপে পার্থক্য
+Combinator: দুই বা ততধিক ট্যাগের পারস্পরিক সম্পর্ক (Parent-Child-Sibling) ব্যবহার করে সিলেক্ট করে।
+
+Advanced Selector: এলিমেন্টের বিশেষ গুণাবলী, অবস্থান বা অবস্থা দেখে অত্যন্ত নিখুঁতভাবে সিলেক্ট করে।

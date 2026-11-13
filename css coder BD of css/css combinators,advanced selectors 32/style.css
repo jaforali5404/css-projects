@@ -1,0 +1,32 @@
+/* all selectors */
+*{
+    padding-top: 10px;
+}
+/* p{
+    color: red;
+} */
+ /* discendent selectors */
+ /* body div p{
+    color: red;
+ } */
+  /* child selectors */
+/* body>div>div>p{
+   color: red;
+ } */
+ /* adjacent sibling */
+/* div+p{
+   color: red;
+ } */
+/* general sibling */
+b~p{
+   color: red;
+ }
+/* advance selectors */
+input[type="text"]{
+    background: orange;
+}
+input[type="number"]{
+    background: red;
+}
+
+

@@ -1,0 +1,15 @@
+.content1{
+    width: 250px;
+    height: 250px;
+    background-color: #ff00ff;
+    border: 10px solid gold;
+    padding: 20px;
+    margin: auto;
+
+    /* a khane overflow er 4 ti option ase jeti khusi vebohar kora jay */
+    overflow: auto;
+    /* overflow-y: scroll; */
+    /* overflow-x: auto; */
+
+
+}

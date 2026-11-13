@@ -1,0 +1,14 @@
+.abouttext{
+    background-color: #dadada;
+    /* height value thake sobsomay auto kintu picjel onujai height width nirdharon kora jay */
+    /* height: 200px; */
+    /* min height dewor karone content er sate sate height o barbe abong max height dewar karone 400px er besi hobe na */
+    min-height: 200px;
+    max-height: 400px;
+
+    /* width 300px dewor fole desplay size choto boro ja kori na ke width kom besi hobe na asara width % parcentag diye kora jay */
+    /* width: 300px; */
+    /* max width 800px bole dewor karone 800px er besi hobe na kintu joto khusi choto hobe.aber min width dewor karone height width fix holo */
+    max-width: 800px;
+    min-width: 200px;
+}

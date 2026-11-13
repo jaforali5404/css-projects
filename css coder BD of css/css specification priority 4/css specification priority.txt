@@ -1,0 +1,104 @@
+CSS (Cascading Style Sheets)-এ Specification (সাধারণত Specificity নামে পরিচিত) এবং Priority (বা Cascading Order) হলো এমন দুটি মূল নিয়ম, যা নির্ধারণ করে ওয়েব পেজের কোনো এলিমেন্টে একের অধিক CSS রুল প্রয়োগ করা হলে শেষ পর্যন্ত কোনটি স্ক্রিনে দেখাবে।সহজ কথায়, এটি হলো CSS-এর "ক্ষমতা" বা "অগ্রাধিকার" নির্ধারণের নিয়ম।১. Specificity (স্পেসিফিসিটি)Specificity হলো একটি স্কোরিং সিস্টেম। ব্রাউজার প্রতিটি CSS সিলেক্টরকে একটি নির্দিষ্ট নম্বর বা স্কোর দেয়। যার স্কোর বেশি, তার স্টাইলই এলিমেন্টে অ্যাপ্লাই হয়।Specificity-কে ৪টি ক্যাটাগরিতে (বা একটি ৪ অঙ্কের সংখ্যা (A, B, C, D) হিসেবে) হিসাব করা হয়:Inline Styles (1, 0, 0, 0): HTML ট্যাগের ভেতর সরাসরি লেখা স্টাইল (style="...")। এর ক্ষমতা সবচেয়ে বেশি।ID Selectors (0, 1, 0, 0): যেমন: #header, #user-profile ইত্যাদি।Class, Pseudo-class, Attribute Selectors (0, 0, 1, 0): যেমন: .btn, :hover, [type="text"] ইত্যাদি।Element & Pseudo-element Selectors (0, 0, 0, 1): যেমন: h1, p, div, ::before ইত্যাদি।(Universal Selector *, combinators যেমন >, +, ~ এর কোনো Specificity পয়েন্ট নেই।)Specificity-র উদাহরণ:CSS/* Specificity: 0, 0, 0, 1 (শুধু ১টি Element) */
+p { 
+  color: black; 
+}
+
+/* Specificity: 0, 0, 1, 0 (১টি Class) */
+.text { 
+  color: blue; 
+}
+
+/* Specificity: 0, 1, 0, 0 (১টি ID) */
+#main-text { 
+  color: red; 
+}
+যদি কোনো HTML <p class="text" id="main-text"> ট্যাগ থাকে, তবে টেক্সটের রঙ লাল (red) হবে, কারণ ID Selector-এর Specificity স্কোর Class বা Element-এর চেয়ে বেশি।২. Priority / Cascading Order (অগ্রাধিকারের ক্রম)যখন Specificity সমান হয়ে যায়, অথবা বিভিন্ন সোর্স থেকে CSS আসে, তখন ব্রাউজার Cascading Rules দিয়ে Priority নির্ধারণ করে।নীচে কম থেকে বেশি পাওয়ার বা Priority-র ক্রম দেওয়া হলো:১. Source / Origin (স্টাইলের উৎস)Browser Default (User Agent Stylesheets): ব্রাউজারের নিজস্ব ডিফোল্ট স্টাইল (সবচেয়ে কম অগ্রাধিকার)।User Styles: ব্যবহারকারীর নিজস্ব ব্রাউজার সেটিংস।Author Styles: ওয়েব ডেভেলপার হিসেবে আপনার লেখা CSS (সবচেয়ে বেশি অগ্রাধিকার)।২. Order of Appearance (লেখার ক্রম)যদি দুটি রুলের Specificity একদম সমান হয়, তবে CSS ফাইলের নীচে/শেষে লেখা রুলটি জয়ী হবে। (Last Rule Wins).CSS.btn { color: red; }
+.btn { color: green; } /* এই রুলটি অ্যাপ্লাই হবে, কারণ এটি পরে লেখা হয়েছে */
+৩. !important এর ব্যবহার (Super Priority)!important ফ্ল্যাগ ব্যবহার করলে অন্য সব Specificity এবং Cascading নিয়ম ভেঙে এটি সর্বোচ্চ অগ্রাধিকার পায়।CSSp {
+  color: green !important; /* Specificity কম হলেও এটিই কাজ করবে */
+}
+#main-text {
+  color: red;
+}
+⚠️ পরামর্শ: !important অতিরিক্ত ব্যবহার করা উচিত নয়, কারণ এতে পরবর্তীতে কোড ওভাররাইড বা ডিবাগ করা খুব কঠিন হয়ে পড়ে।সংক্ষেপে Priority-র সিরিয়াল (কম থেকে বেশি):$$\text{Element Selector} \longrightarrow \text{Class Selector} \longrightarrow \text{ID Selector} \longrightarrow \text{Inline Style} \longrightarrow \text{!important}$$ইকুয়াল Specificity? $\rightarrow$ যেটি ফাইল বা কোডে সবশেষে থাকবে সেটি কাজ করবে।ডিফারেন্ট Specificity? $\rightarrow$ যার Specificity Score বেশি সেটি কাজ করবে।!important যুক্ত? $\rightarrow$ সেটিই সবার আগে কাজ করবে।
+
+
+
+******
+
+
+নিচে CSS Specificity হিসাব করার ৩টি উদাহরণ এবং নিজেকে যাচাই করার জন্য ৩টি কুইজ দেওয়া হলো।১. কীভাবে Specificity হিসাব করতে হয়?আমরা Specificity হিসাব করার সময় এটিকে (Inline, ID, Class, Element) — এই ৪টি ঘরে ভাগ করে নম্বর দিই:Inline style: style="..." থাকলে (1, 0, 0, 0)ID: #my-id প্রতিটি ID-র জন্য (0, 1, 0, 0)Class / Pseudo-class / Attribute: .my-class, :hover, [type="text"] প্রতিটির জন্য (0, 0, 1, 0)Element / Pseudo-element: div, p, ::before প্রতিটির জন্য (0, 0, 0, 1)২. বাস্তব উদাহরণ (Examples)উদাহরণ ১:CSSdiv ul li a { color: blue; }
+Inline: 0ID: 0Class: 0Element: 4টি (div, ul, li, a)মোট Specificity Score: (0, 0, 0, 4)উদাহরণ ২:CSS#nav .menu-item:hover a { color: red; }
+Inline: 0ID: 1টি (#nav)Class / Pseudo-class: 2টি (.menu-item, :hover)Element: 1টি (a)মোট Specificity Score: (0, 1, 2, 1)উদাহরণ ৩:CSSheader#main-header div.container ul.nav-list li#first-item a.link { color: green; }
+Inline: 0ID: 2টি (#main-header, #first-item)Class: 2টি (.container, .nav-list, .link $\rightarrow$ মোট 3টি)Element: 4টি (header, div, ul, li, a $\rightarrow$ মোট 5টি)মোট Specificity Score: (0, 2, 3, 5)৩. এবার আপনার পালা: Specificity কুইজ 🧠নিচের প্রশ্নগুলোর উত্তর চিন্তা করুন এবং দেখুন কত স্কোর আসে!❓ প্রশ্ন ১: টেক্সটের রঙ কী হবে?HTML:HTML<p class="text" id="description">Hello World</p>
+CSS:CSS/* Rule A */
+#description { color: red; }
+
+/* Rule B */
+p.text { color: blue; }
+Rule A এর স্কোর: (0, 1, 0, 0) [১টি ID]Rule B এর স্কোর: (0, 0, 1, 1) [১টি Class, ১টি Element]ফলাফল: red (লাল)। কারণ Rule A-এর একটি ID রয়েছে, যার পাওয়ার বেশি।❓ প্রশ্ন ২: বাটনের ব্যাকগ্রাউন্ড কালার কোনটি হবে?HTML:HTML<button class="btn main-btn" id="submit-btn">Submit</button>
+CSS:CSS/* Rule A */
+button.btn.main-btn { background-color: yellow; }
+
+/* Rule B */
+.btn.main-btn { background-color: green; }
+Rule A এর স্কোর: (0, 0, 2, 1) [২টি Class, ১টি Element]Rule B এর স্কোর: (0, 0, 2, 0) [২টি Class]ফলাফল: yellow (হলুদ)। কারণ ২টি রুলেই সমপরিমাণ Class আছে, কিন্তু Rule A-তে বাড়তি একটি Element selector (button) থাকার কারণে এর পয়েন্ট ১ বেশি।❓ প্রশ্ন ৩: লিঙ্কটির টেক্সট কালার কী হবে?HTML:HTML<div id="sidebar">
+  <a class="menu-link" style="color: purple;">Home</a>
+</div>
+CSS:CSS/* Rule A */
+#sidebar a.menu-link { color: orange !important; }
+
+/* Rule B */
+#sidebar .menu-link { color: cyan; }
+Rule A এর স্কোর: (0, 1, 1, 1) + !importantRule B এর স্কোর: (0, 1, 1, 0)Inline Style: (1, 0, 0, 0)ফলাফল: orange (কমলা)। যদিও HTML-এ Inline style দেওয়া আছে যার পাওয়ার বেশ বেশি, কিন্তু !important থাকার কারণে Rule A সব নিয়ম ভেদ করে সর্বোচ্চ অগ্রাধিকার পাবে।
+
+
+****
+
+
+
+CSS-এ !important ব্যবহার করাকে বলা হয় "Specificity War" বা পাওয়ারের লড়াই শুরু করা। একবার একটি এলিমেন্টে !important দিলে, পরবর্তীতে সেটি ওভাররাইড করতে আরও বেশি !important ব্যবহার করতে হয়, যা কোডকে নষ্ট করে দেয় এবং ডিবাগ করা কঠিন করে তোলে।!important ছাড়াই Specificity সঠিকভাবে হ্যান্ডেল করার এবং ক্লিন CSS লেখার প্রমাণিত বেস্ট প্র্যাকটিসগুলো নিচে দেওয়া হলো:১. Specificity নিয়ন্ত্রণ করার ৩টি কার্যকর পদ্ধতিক. কম Specificity-র সিলেক্টর ব্যবহার করা (Keep it Low)সবসময় আইডি (#id) ব্যবহার না করে শুধুমাত্র একক ক্লাস (Single Class) দিয়ে স্টাইল করার চেষ্টা করুন।❌ খারাপ অভ্যাস: #header div.nav ul li a.btn (অপ্রয়োজনীয় জটিল সিলেক্টর)✅ ভালো অভ্যাস: .btn-primary (সহজ এবং সহজে ওভাররাইড যোগ্য)খ. আধুনিক CSS-এর @layer (Cascade Layers) ব্যবহার করাআধুনিক CSS-এর সবচেয়ে চমৎকার ফিচার হলো Cascade Layers। এর মাধ্যমে আপনি কোডের লেয়ার বা স্তর ঠিক করে দিতে পারেন। নিচের লেয়ারের কোডের Specificity যত বেশিই হোক না কেন, উপরের লেয়ারের স্টাইল জয়ী হবে।CSS/* লেয়ারের অগ্রাধিকার ঠিক করা (ডানপাশের লেয়ারের ক্ষমতা বেশি) */
+@layer base, components, utilities;
+
+@layer base {
+  /* আইডি সিলেক্টর হলেও এর ক্ষমতা কম থাকবে */
+  #main-btn {
+    background-color: blue;
+  }
+}
+
+@layer utilities {
+  /* সাধারণ ক্লাস হলেও এটি জয়ী হবে কারণ এটি উচ্চ অগ্রাধিকারের লেয়ারে আছে */
+  .bg-red {
+    background-color: red;
+  }
+}
+গ. :where() এবং :is() এর সঠিক ব্যবহার:where() pseudo-class: এর ভেতরে আপনি যতগুলো সিলেক্টরই লেখেন না কেন, এর Specificity সবসময় 0, 0, 0, 0 থাকে।:is() pseudo-class: এর ভেতরের সবচেয়ে শক্তিশালী সিলেক্টরের Specificity গ্রহণ করে।CSS/* :where-এর ভেতরের কোডের Specificity জিরো (0) */
+:where(header, footer) p {
+  color: gray;
+}
+
+/* পরবর্তীতে যেকোনো সাধারণ ক্লাস দিয়েও এটিকে সহজে ওভাররাইড করা যাবে */
+.footer-text {
+  color: black; 
+}
+২. ক্লিন এবং মেইনটেনেবল CSS লেখার বেস্ট প্র্যাকটিস১. BEM (Block Element Modifier) নেমিং কনভেনশন মেনে চলাBEM হলো ক্লাস নেমিংয়ের এমন একটি পদ্ধতি যা Specificity কম রাখে এবং কোডের গঠন বুঝতে সাহায্য করে।Block: মূল উপাদান (যেমন: .card)Element: ব্লকের ভেতরের অংশ (যেমন: .card__title, .card__button)Modifier: উপাদানের ভিন্ন রূপ (যেমন: .card__button--disabled)CSS/* BEM ব্যবহারের ফলে কোনো Nested Selector ছাড়াই পরিষ্কার কোড লেখা যায় */
+.card { ... }
+.card__title { ... }
+.card__button { ... }
+.card__button--danger { ... }
+২. Utility Classes (পারপাস বেসড স্টাইল) ব্যবহারসম্পূর্ণ ভিন্ন কোনো স্টাইল দেওয়ার প্রয়োজন হলে মূল ক্লাস পরিবর্তন না করে একটি বাড়তি ক্লাস যোগ করুন।CSS.text-center { text-align: center; }
+.hidden { display: none; }
+৩. CSS Variables (Custom Properties) ব্যবহার করানির্দিষ্ট জায়গায় নির্দিষ্ট স্টাইল পরিবর্তন করার জন্য Specificity না বাড়িয়ে ভ্যারিয়েবল ওভাররাইড করুন।CSS:root {
+  --btn-color: blue;
+}
+
+.button {
+  background-color: var(--btn-color);
+}
+
+/* Specificity না বাড়িয়ে শুধু ভ্যারিয়েবলের মান পরিবর্তন */
+.card .button {
+  --btn-color: red;
+}
+সংক্ষিপ্ত চেকলিস্ট (কী করবেন vs কী করবেন না)❌ কী করবেন না✅ কী করবেনকোডে #id দিয়ে সাধারণ স্টাইলিং করাস্টাইলিংয়ের জন্য সবসময় Class ব্যবহার করুন!important দিয়ে কোড ওভাররাইড করাCascade Order এবং @layer ব্যবহার করুনdiv ul li p a এভাবে ডিপ নেস্টিং করাসর্বোচ্চ ১ থেকে ২ লেভেল সিলেক্টর নেস্টিং করুনস্টাইলিং করতে Inline Styles দেওয়াক্লাসের মাধ্যমে সব CSS নির্দিষ্ট CSS ফাইলেই রাখুন

@@ -1,0 +1,18 @@
+h1{
+    text-align: center;
+}
+/* text align a jastify likhe dile text er 2 side soman hobe */
+div{
+    text-align: center;
+}
+
+
+/* css text decoration */
+/* text decoration a bivinno style ase jemon double,deshed,solid,wavy thikness dewor fole underline mota hoise */
+
+h2{
+    text-decoration: underline red wavy 5px;
+    /* text-decoration-color: red;
+    text-decoration-style: wavy;
+    text-decoration-thickness: 3px; */
+}

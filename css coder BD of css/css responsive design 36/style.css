@@ -1,0 +1,98 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.hero-section {
+    width: 100%;
+    height: 650px;
+    background-image: url('hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.content {
+    width: 100%;             /* ছোট স্ক্রিনে ১০০% জায়গা নেবে */
+    max-width: 700px;        /* বড় স্ক্রিনে ৭০০ পিক্সেলের বেশি হবে না */
+    padding: 40px 20px;      /* উপরে-নিচে ৪০px এবং ডানে-বামে ২০px প্যাডিং (কাটবে না) */
+    box-sizing: border-box;  /* প্যাডিং যেন উইথকে বাড়াতে না পারে */
+}
+
+.title {
+    color: #d15252;
+}
+
+.title h1 {
+    margin-top: 0;
+    font-size: clamp(24px, 5vw, 40px); /* স্ক্রিন ছোট হলে স্বয়ংক্রিয়ভাবে ফন্ট ২৪px থেকে ৪০px এর মধ্যে ছোট-বড় হবে */
+}
+
+.subtitle {
+    color: hsl(27, 88%, 43%);
+    margin-bottom: 50px;
+}
+
+.subtitle p {
+    font-size: clamp(16px, 2.5vw, 20px); /* রেসপন্সিভ ফন্ট */
+}
+
+.more-button {
+    color: blue;
+    text-decoration: none;
+    background-color: rgb(155, 161, 161);
+    padding: 12px 30px;
+    font-size: clamp(16px, 3vw, 24px); /* বাটন ও লেখার সাইজ রেসপন্সিভ */
+    border-radius: 40px;
+    font-weight: bold;
+    display: inline-block;
+}
+.containar{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: repeat(4, 200px);
+    margin-top: 20px;
+}
+.box{
+    font-size: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: #3f51b5;
+    border-radius: 5px;
+    /* height: 200px; */
+}
+
+/* responsive design */
+@media screen and (max-width:992px){
+    .containar{
+        grid-template-columns:auto auto;
+    }
+    body{
+        background: red;
+    }   
+}
+@media screen and (max-width:768px) {
+    .title h1 {
+       font-size: clamp(24px, 5vw, 32px); 
+    }
+    .more-button {
+       padding: 10px 30px;
+       font-size: clamp(16px, 3vw, 20px);
+    }
+    body{
+        background: green;
+    }      
+}
+@media screen and (max-width:576px) {
+    .content{
+       padding: 40px 15px;  
+    }
+    .containar{
+        grid-template-columns: auto;
+    }
+    body{
+        background: blue;
+    }      
+}
+

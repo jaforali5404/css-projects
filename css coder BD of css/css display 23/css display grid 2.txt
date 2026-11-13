@@ -1,0 +1,272 @@
+CSS Grid Layout হলো একটি শক্তিশালী দ্বিমাত্রিক (2D) লেআউট সিস্টেম, যার মাধ্যমে একই সাথে কলাম (Column) এবং সারি (Row) আকারে ওয়েব পেজের উপাদানগুলো সাজানো যায়।
+
+Flexbox-এর মতোই CSS Grid-এ দুই ধরনের প্রপার্টি থাকে:
+
+Parent Container (Grid Container) Properties – যা মেইন কন্টেইনারের ওপর কাজ করে।
+
+Child Items (Grid Items) Properties – যা কন্টেইনারের ভেতরের সরাসরি উপাদানগুলোর ওপর কাজ করে।
+
+Parent Container Properties (গ্রিড কন্টেইনারের প্রপার্টি)
+একটি HTML element-কে Grid container করতে প্রথমে display: grid; বা display: inline-grid; সেট করতে হয়।
+
+CSS
+.container {
+  display: grid;
+}
+১. grid-template-columns ও grid-template-rows
+গ্রিডের কলাম এবং সারির সংখ্যা ও পরিমাপ (Size) নির্ধারণ করে।
+
+দৈর্ঘ্যের একক (px, %, rem): নির্দিষ্ট সাইজ দিতে।
+
+fr (Fractional Unit): খালি জায়গার অনুপাত অনুযায়ী ভাগ করতে।
+
+repeat(): একই সাইজের একাধিক কলাম/সারি বারবার লেখার সহজ রূপ।
+
+auto: ভেতরের উপাদান অনুযায়ী স্বয়ংক্রিয় সাইজ নিতে।
+
+CSS
+.container {
+  /* ৩টি কলাম: ১মটি 100px, ২য়টি বাকী জায়গার ২ ভাগ, ৩য়টি ১ ভাগ */
+  grid-template-columns: 100px 2fr 1fr; 
+  
+  /* ৩টি সমান কলাম তৈরির শর্টকাট */
+  /* grid-template-columns: repeat(3, 1fr); */
+
+  /* ২টি সারি: ১মটি 150px, ২য়টি 200px */
+  grid-template-rows: 150px 200px;
+}
+২. grid-template-areas
+গ্রিডের লেআউটকে কিছু লেবেল বা নাম দিয়ে সহজে সাজানোর জন্য ব্যবহৃত হয়।
+
+CSS
+.container {
+  grid-template-areas:
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+}
+৩. grid-template
+এটি grid-template-rows, grid-template-columns, এবং grid-template-areas-এর শর্টহ্যান্ড (Shorthand)।
+
+CSS
+.container {
+  grid-template:
+    "header header" 100px
+    "sidebar content" 1fr
+    / 200px 1fr; /* [rows layout] / [columns layout] */
+}
+৪. column-gap, row-gap ও gap
+গ্রিডের সারির এবং কলামের মাঝের খালি জায়গা বা ব্যবধান ঠিক করে।
+
+row-gap: সারির মাঝের ফাঁকা জায়গা।
+
+column-gap: কলামের মাঝের ফাঁকা জায়গা।
+
+gap: শর্টহ্যান্ড (row-gap column-gap)।
+
+CSS
+.container {
+  row-gap: 15px;
+  column-gap: 20px;
+  /* gap: 15px 20px; */ /* row-gap column-gap */
+}
+৫. justify-items
+ইনলাইন বা আনুভূমিক অক্ষ (Horizontal Axis - কলাম বরাবর) অনুযায়ী গ্রিডের ভেতরের উপাদানগুলোকে এলাইন করে।
+
+stretch (Default): সেলের পুরো চওড়া পূরণ করে ফেলে।
+
+start: সেলের বাম দিকে এলাইন হয়।
+
+end: সেলের ডান দিকে এলাইন হয়।
+
+center: সেলের আনুভূমিকভাবে একদম মাঝে থাকে।
+
+CSS
+.container {
+  justify-items: center; /* stretch | start | end | center */
+}
+৬. align-items
+ব্লক বা উল্লম্ব অক্ষ (Vertical Axis - সারি বরাবর) অনুযায়ী উপাদানগুলোকে এলাইন করে।
+
+stretch (Default): সেলের পুরো উচ্চতা পূরণ করে।
+
+start: সেলের উপরের দিকে থাকে।
+
+end: সেলের নিচের দিকে থাকে।
+
+center: সেলের উল্লম্বভাবে একদম মাঝে থাকে।
+
+CSS
+.container {
+  align-items: center; /* stretch | start | end | center */
+}
+৭. place-items
+এটি align-items এবং justify-items-এর শর্টহ্যান্ড।
+
+CSS
+.container {
+  place-items: center center; /* align-items justify-items */
+  /* place-items: center; (উভয় অক্ষের জন্য একই ভ্যালু সেট করে) */
+}
+৮. justify-content
+পুরো গ্রিডটি যদি কন্টেইনারের চেয়ে ছোট হয়, তবে আনুভূমিকভাবে গ্রিড টেবিলটি কোথায় থাকবে তা নির্ধারণ করে।
+
+start / end / center: গ্রিডটিকে ডানে, বামে বা মাঝে রাখে।
+
+space-between / space-around / space-evenly: কলামগুলোর মাঝে ও চারপাশে ফাঁকা জায়গা বিতরণ করে।
+
+CSS
+.container {
+  justify-content: space-between;
+}
+৯. align-content
+পুরো গ্রিডটি যদি কন্টেইনারের চেয়ে ছোট হয়, তবে উল্লম্বভাবে (Vertical) গ্রিডটি কোথায় থাকবে তা নির্ধারণ করে।
+
+start / end / center / space-between / space-around / space-evenly
+
+CSS
+.container {
+  align-content: center;
+}
+১০. place-content
+এটি align-content এবং justify-content-এর শর্টহ্যান্ড।
+
+CSS
+.container {
+  place-content: center space-between; /* align-content justify-content */
+}
+১১. grid-auto-columns ও grid-auto-rows
+টেমপ্লেটে উল্লেখ ছাড়া যদি অতিরিক্ত নতুন সারি বা কলাম (Implicit Grid) তৈরি হয়, তাদের আকার কত হবে তা নির্দিষ্ট করে।
+
+CSS
+.container {
+  grid-auto-rows: 100px; /* নতুন তৈরি হওয়া সব অতিরিক্ত সারির হাইট ১০০px হবে */
+}
+১২. grid-auto-flow
+স্বয়ংক্রিয়ভাবে তৈরি হওয়া গ্রিড আইটেমগুলো কীভাবে সাজানো হবে (সারি নাকি কলাম আকারে) তা ঠিক করে।
+
+row (Default): সারির দিকে সাজাবে।
+
+column: কলামের দিকে সাজাবে।
+
+dense: খালি ছোট ছোট জায়গাগুলো থাকলে পরের আইটেম দিয়ে পূরণ করার চেষ্টা করবে।
+
+CSS
+.container {
+  grid-auto-flow: row dense;
+}
+Child Items Properties (গ্রিড আইটেমের প্রপার্টি)
+১. grid-column-start, grid-column-end, grid-row-start, grid-row-end
+কোনো আইটেম গ্রিডের কত নম্বর লাইন থেকে শুরু হবে এবং কত নম্বর লাইনে গিয়ে শেষ হবে তা নির্দিষ্ট করে।
+
+CSS
+.item {
+  grid-column-start: 1; /* ১ম কলাম লাইন থেকে শুরু */
+  grid-column-end: 3;   /* ৩য় কলাম লাইনে গিয়ে শেষ (অর্থাৎ ২টি কলাম দখল করবে) */
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+২. grid-column ও grid-row
+উপরের প্রপার্টিগুলোর শর্টহ্যান্ড। এখানে span কিওয়ার্ড ব্যবহার করে কয়টি সেল দখল করবে তাও লেখা যায়।
+
+CSS
+.item {
+  grid-column: 1 / 3; /* start / end */
+  /* grid-column: 1 / span 2; */ /* ১ম লাইন থেকে শুরু করে ২টি কলাম নেবে */
+  grid-row: 1 / 2;
+}
+৩. grid-area
+আইটেমটি কোন নামাঙ্কিত অঞল (grid-template-area)-এ বসবে তা নির্ধারণ করে। অথবা এটি grid-row-start / grid-column-start / grid-row-end / grid-column-end-এর শর্টহ্যান্ড হিসেবে কাজ করে।
+
+CSS
+.header-item {
+  grid-area: header; /* parent-এর grid-template-areas এর সাথে মিলিয়ে */
+}
+৪. justify-self
+একটি নির্দিষ্ট গ্রিড আইটেমকে শুধু কলাম বা আনুভূমিক অক্ষ বরাবর আলাদাভাবে এলাইন করতে ব্যবহৃত হয় (Parent-এর justify-items ওভাররাইড করে)।
+
+stretch / start / end / center
+
+CSS
+.item {
+  justify-self: end;
+}
+৫. align-self
+একটি নির্দিষ্ট গ্রিড আইটেমকে শুধু সারি বা উল্লম্ব অক্ষ বরাবর আলাদাভাবে এলাইন করতে ব্যবহৃত হয় (Parent-এর align-items ওভাররাইড করে)।
+
+stretch / start / end / center
+
+CSS
+.item {
+  align-self: center;
+}
+৬. place-self
+এটি align-self এবং justify-self-এর শর্টহ্যান্ড।
+
+CSS
+.item {
+  place-self: center end; /* align-self justify-self */
+}
+একটি সম্পূর্ণ প্র্যাকটিক্যাল উদাহরণ
+এখানে একটি স্ট্যান্ডার্ড ওয়েবসাইটের সম্পূর্ণ লেআউট CSS Grid দিয়ে তৈরির উদাহরণ দেওয়া হলো:
+
+HTML Code:
+
+HTML
+<div class="grid-container">
+  <header class="header">Header</header>
+  <aside class="sidebar">Sidebar</aside>
+  <main class="content">Main Content</main>
+  <footer class="footer">Footer</footer>
+</div>
+CSS Code:
+
+CSS
+/* Parent Container Setup */
+.grid-container {
+  display: grid;
+  /* ৩টি সমান কলাম এবং ৩টি সারি নির্ধারণ */
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 80px 1fr 60px;
+  
+  /* নাম দিয়ে গ্রিড সাজানো */
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+
+  gap: 15px; /* আইটেমগুলোর মাঝের ব্যবধান */
+  height: 100vh;
+  padding: 10px;
+  background-color: #e0e0e0;
+}
+
+/* Base style for child items */
+.grid-container > * {
+  background-color: #3f51b5;
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+/* Assigning Area Names to Items */
+.header {
+  grid-area: header;
+  background-color: #1e88e5;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #43a047;
+}
+
+.content {
+  grid-area: content;
+  background-color: #fb8c00;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #e53935;
+}

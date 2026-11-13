@@ -1,0 +1,153 @@
+ওয়েব পেজে টেবিল তৈরি করা হয় HTML ট্যাগ দিয়ে, কিন্তু CSS ব্যবহার করে সেই টেবিলের প্রতিটি উপাদান বা এলিমেন্টকে আকর্ষণীয় ও রেসপন্সিভ করা হয়।
+
+টেবিলের প্রধান উপাদান এবং সেগুলোতে ব্যবহৃত গুরুত্বপূর্ণ CSS প্রপার্টিসমূহ নিচে ভেঙে আলোচনা করা হলো:
+
+১. <table> (মূল কন্টেইনার)
+পুরো টেবিলের বাইরের বর্ডার, সাইজ এবং এরিয়া নিয়ন্ত্রণ করে।
+
+ব্যবহার: border-collapse, width, margin
+
+CSS
+table {
+  width: 100%;
+  border-collapse: collapse; /* বর্ডারের মাঝের স্পেস দূর করে একটি সিঙ্গেল লাইন তৈরি করে */
+}
+২. <caption> (টেবিলের শিরোনাম)
+টেবিলের উপরে বা নিচে কোনো শিরোনাম বা বর্ণনা যোগ করতে ব্যবহৃত হয়।
+
+ব্যবহার: caption-side, font-weight, padding
+
+CSS
+caption {
+  caption-side: top; /* শিরোনাম টেবিলের উপরে দেখাবে (bottom দিলে নিচে দেখাবে) */
+  font-weight: bold;
+  padding: 10px;
+}
+৩. <thead> (টেবিলের হেডার সেকশন)
+টেবিলের প্রথম সারি বা কলামের শিরোনামগুলোর গ্রুপ।
+
+ব্যবহার: background-color, color
+
+CSS
+thead {
+  background-color: #2c3e50;
+  color: #ffffff;
+}
+৪. <th> (হেডার সেল)
+হেডার অংশের প্রতিটি একক ঘর বা সেল। বাই-ডিফল্ট এটি বোল্ড এবং সেন্টারে থাকে।
+
+ব্যবহার: text-align, padding, font-size
+
+CSS
+th {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+৫. <tbody> (টেবিলের মূল তথ্য)
+টেবিলের সমস্ত ডেটা বা রো (Row)-এর মেইন বডি কন্টেইনার।
+
+ব্যবহার: সাধারণ ব্যাকগ্রাউন্ড বা ফ্রন্ট সাইজ সেট করতে পারেন।
+
+CSS
+tbody {
+  font-family: Arial, sans-serif;
+}
+৬. <tr> (টেবিল রো)
+টেবিলের প্রতিটি অনুভূমিক লাইন বা সারি।
+
+ব্যবহার: :hover এবং :nth-child() সিলেকটর দিয়ে টেবিলকে স্ট্রাইপড (Striped) করার কাজে ব্যবহার হয়।
+
+CSS
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* জোড় নম্বর সারির ব্যাকগ্রাউন্ড পরিবর্তন */
+}
+
+tr:hover {
+  background-color: #e0e0e0; /* মাউস নিলে সারির রঙ পরিবর্তন হবে */
+}
+৭. <td> (ডেটা সেল)
+টেবিলের ভেতরের আসল তথ্যের ঘর বা সেল।
+
+ব্যবহার: padding, border, color
+
+CSS
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  color: #333;
+}
+৮. <tfoot> (টেবিলের ফুটার সেকশন)
+টেবিলের নিচের দিকে মোট হিসাব বা সামারি দেখানোর জন্য ব্যবহৃত হয়।
+
+ব্যবহার: font-weight, background-color
+
+CSS
+tfoot {
+  font-weight: bold;
+  background-color: #f9f9f9;
+}
+সম্পূর্ণ HTML ও CSS কোড স্ট্রাকচার
+সবগুলো এলিমেন্ট একসাথে কীভাবে কাজ করে তা বোঝার জন্য নিচের কোড ব্লকটি দেখতে পারেন:
+
+HTML
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  caption {
+    caption-side: top;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  thead {
+    background-color: #007bff;
+    color: white;
+  }
+  th, td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  tfoot {
+    background-color: #eee;
+    font-weight: bold;
+  }
+</style>
+
+<table>
+  <caption>কর্মকর্তাদের তালিকা</caption>
+  <thead>
+    <tr>
+      <th>আইডি</th>
+      <th>নাম</th>
+      <th>পদবি</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>১১০১</td>
+      <td>আরিফ আহমেদ</td>
+      <td>ডেভেলপার</td>
+    </tr>
+    <tr>
+      <td>১১০২</td>
+      <td>সাদিয়া রহমান</td>
+      <td>ডিজাইনার</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">মোট কর্মী</td>
+      <td>২ জন</td>
+    </tr>
+  </tfoot>
+</table>

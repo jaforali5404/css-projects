@@ -1,0 +1,67 @@
+.border-box{
+    background-color: #e7e7e7;
+    height: 100px;
+    width: 400px;
+    padding: 10px;
+    /* border-width: 10px; */
+    /* border er style 10/12 ta ase solid,dotted,double,dashed, */
+    /* border-style: solid;
+    border-color: red;
+     */
+     /* vengge venge na kore akbare korar niyon propetionl vabe ai code ta besi kora hoy */
+     /* a sara ak side a border kora jay */
+    border-top: 10px solid blue;
+    border-left: 10px solid red;
+    border-bottom: 10px solid yellow;
+    border-right: 10px solid green;
+    /* ak propaty diye sob border style change korar niyom */
+    /* border-style: dashed dotted double solid; */
+
+}
+.border-title{
+    background-color: #ff00ff;
+    height: 100px;
+    width: 400px;
+    padding: 10px;
+    border-top: 10px solid blue;
+    border-left: 10px solid red;
+    border-bottom: 10px solid yellow;
+    border-right: 10px solid green;
+    border-style: dashed solid;
+    /* border-radius: 50px; */
+    /* ati dewar fole 2 side beke gese */
+    /* border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px; */
+    /* ati alada vabe na kore ak bare kora jay */
+    /* border-radius: 20px 100px 50px; */
+    /* jodi ak kornare kaj kiri tahale */
+    border-radius: 0 0 0 50px;
+
+    
+}
+
+.circle{
+    /* circle korar jonno */
+    height: 200px;
+    width: 200px;
+    background-color: aqua;
+    margin-top: 50px;
+    border-radius: 100px;
+}
+.circle1{
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    margin-top: 50px;
+    border-radius: 100px;
+} 
+
+img{
+  height: 100px;
+  width: 100px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+   

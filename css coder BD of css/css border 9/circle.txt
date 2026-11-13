@@ -1,0 +1,68 @@
+সাধারণ CSS এবং border-radius ব্যবহার করে শুধু ডিভটিকে গোল করা যায়, কিন্তু ভেতরের লেখাকে স্বয়ংক্রিয়ভাবে বৃত্তের আকার অনুযায়ী বাঁকানো যায় না।
+
+লেখাটিকে বৃত্তের আকৃতি মেনে ভেতরে সাজাতে CSS Exclusions (shape-outside) অথবা SVG <textPath> ব্যবহার করতে হয়। নিচে সবচেয়ে সহজ ২টি উপায় দেওয়া হলো:
+
+উপায় ১: CSS shape-outside ব্যবহার করে (সবচেয়ে আধুনিক)
+
+লেখাকে বৃত্তের ভেতরের শেপ অনুযায়ী সাজাতে চাইলে একটি খালি ফ্লোট এলিমেন্ট ব্যবহার করে shape-outside: circle() প্রয়োগ করতে হবে।
+
+HTML Code:
+
+HTML
+<div class="circle-container">
+  <div class="left-shape"></div>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, quia tempore eligendi non et nesciunt iste neque sapiente natus alias enim, odio repudiandae perspiciatis qui quisquam saepe minus beatae!
+</div>
+CSS Code:
+
+CSS
+.circle-container {
+  width: 250px;
+  height: 250px;
+  background-color: aqua;
+  border-radius: 50%;
+  margin-top: 50px;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* লেখাকে বৃত্তের শেপে বাঁকানোর জন্য */
+.left-shape {
+  float: left;
+  width: 100%;
+  height: 100%;
+  shape-outside: circle(50%);
+  clip-path: circle(50%);
+}
+উপায় ২: লেখাগুলোকে বৃত্তের মাঝখানে সুন্দরভাবে বিন্যস্ত রাখা (সবচেয়ে সহজ)
+
+যদি আপনি চান লেখাগুলো সাধারণ লাইনের মতো থাকবে কিন্তু বৃত্তের বাইরে চলে যাবে না এবং ঠিক মাঝখানে থাকবে, তবে আপনার বর্তমান কোডে শুধু Flexbox এবং Padding যুক্ত করলেই হবে:
+
+HTML Code:
+
+HTML
+<div class="circle">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, quia tempore eligendi non et nesciunt iste neque sapiente natus alias enim.
+</div>
+CSS Code:
+
+CSS
+.circle {
+  height: 250px;
+  width: 250px;
+  background-color: aqua;
+  margin-top: 50px;
+  border-radius: 50%; /* 100px এর বদলে 50% দেওয়া ভালো */
+  
+  /* ভেতরের লেখাকে মাঝখানে ও বৃত্তের ভেতরে রাখার জন্য */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px; /* লেখা যেন সীমানায় ঠেকে না যায় */
+  box-sizing: border-box;
+  font-size: 13px; /* লেখা বেশি হলে সাইজ একটু ছোট রাখতে হবে */
+}
+পরামর্শ: <br> ট্যাগ তুলে দিয়ে CSS-এর padding এবং font-size দিয়ে অ্যাডজাস্ট করলে টেক্সট বৃত্তের ভেতরে খুব সুন্দরভাবে ফিট হবে।

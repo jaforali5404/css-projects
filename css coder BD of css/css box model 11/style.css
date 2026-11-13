@@ -1,0 +1,11 @@
+.containar{
+    width: 250px;
+    height: auto;
+    background-color: bisque;
+
+    padding: 20px;
+    border: 5px solid red;
+    outline: 10px dashed green;
+    margin: 20px;
+
+}

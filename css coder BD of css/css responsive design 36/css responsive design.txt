@@ -1,0 +1,84 @@
+CSS Responsive (রেসপনসিভ ডিজাইন) হলো ওয়েবসাইটকে এমনভাবে তৈরি করার একটি কৌশল, যাতে ওয়েবসাইটটি মোবাইল, ট্যাবলেট, ল্যাপটপ বা কম্পিউটার—যেকোনো ডিভাইসের স্ক্রিন সাইজের সাথে নিজেকে স্বয়ংক্রিয়ভাবে মানিয়ে নিতে পারে।
+CSS-এ Responsive Web Design (RWD) তৈরির জন্য মূলত কোনো একক Property ব্যবহার করা হয় না। বরং বিভিন্ন Layout System, Units, Media Queries এবং modern CSS Functions-এর সমন্বয়ে রেসপনসিভ ওয়েবসাইট তৈরি করা হয়।নিচে Responsive Design-এর জন্য ব্যবহৃত সকল গুরুত্বপূর্ণ Property, Attribute, Value এবং উদাহরণ বিস্তারিত আলোচনা করা হলো:১. Viewport Meta Tag (HTML Base)রেসপনসিভ ডিজাইনের প্রথম ধাপ হলো HTML-এ Viewport সেট করা, যাতে মোবাইল ডিভাইসে স্ক্রিন স্কেলিং ঠিকঠাক কাজ করে।HTML<meta name="viewport" content="width=device-width, initial-scale=1.0">
+width=device-width: ডিভাইসের আসল স্ক্রিন উইডথ অনুযায়ী পেজের উইডথ সেট করে।initial-scale=1.0: পেজটি প্রথম লোড হওয়ার সময় জুম লেভেল ১.০ রাখে।২. Media Queries (@media)মিডিয়া কোয়েরির মাধ্যমে নির্দিষ্ট স্ক্রিন সাইজ (Width/Height) অনুযায়ী CSS Style প্রয়োগ করা হয়।Attribute / Features:min-width: স্ক্রিনের সর্বনিম্ন উইডথ নির্দেশ করে (Mobile-First approach)।max-width: স্ক্রিনের সর্বোচ্চ উইডথ নির্দেশ করে (Desktop-First approach)।orientation: ডিভাইস পোর্ট্রেট নাকি ল্যান্ডস্কেপ তা নির্ধারণ করে (portrait / landscape)।উদাহরণ:CSS/* Mobile First Base Style */
+.card {
+  width: 100%;
+}
+
+/* Tablet Screen (768px বা তার বেশি) */
+@media screen and (min-width: 768px) {
+  .card {
+    width: 50%;
+  }
+}
+
+/* Desktop Screen (1024px বা তার বেশি) */
+@media screen and (min-width: 1024px) {
+  .card {
+    width: 33.33%;
+  }
+}
+৩. Flexible Sizing Properties & Unitsফিক্সড পিক্সেল (px) ব্যবহারের বদলে রৈখিক বা পার্সেন্টেজ ইউনিট ব্যবহার করা হয়।ক. Relative Units%: প্যারেন্ট ইলিমেন্টের সাথে অনুপাতিক সাইজ।vw (Viewport Width): ভিউপোর্টের চওড়ার ১%।vh (Viewport Height): ভিউপোর্টের উচ্চতার ১%।rem: Root HTML Font Size (সাধারণত 1rem = 16px)-এর ওপর ভিত্তি করে স্কেল হয়।em: প্যারেন্ট ইলিমেন্টের ফন্ট সাইজের ওপর ভিত্তি করে স্কেল হয়।খ. Min/Max Dimension Propertiesmax-width: ইলিমেন্টটির সর্বোচ্চ চওড়া নির্ধারণ করে। স্ক্রিন ছোট হলে এটি সংকুচিত হয়।min-width: ইলিমেন্টটির সর্বনিম্ন চওড়া নির্ধারণ করে।width: fit-content / min-content / max-content: কন্টেন্টের ওপর নির্ভর করে উইডথ সামঞ্জস্য করে।উদাহরণ:CSS.container {
+  width: 90%;          /* বড় স্ক্রিনে স্ক্রিনের ৯০% জায়গা নেবে */
+  max-width: 1200px;   /* কিন্তু ১২০০ পিক্সেলের বেশি বড় হবে না */
+  min-width: 300px;    /* ৩০০ পিক্সেলের চেয়ে ছোট হবে না */
+  margin: 0 auto;      /* মাঝখানে রাখার জন্য */
+}
+৪. Responsive Images & Mediaছবি বা ভিডিও যেন স্ক্রিনের বাইরে চলে না যায়, তার জন্য ব্যবহৃত প্রপার্টি:max-width: 100%: ইমেজকে তার প্যারেন্টের চেয়ে বড় হতে দেয় না।height: auto: Aspect Ratio বজায় রাখে।object-fit: কন্টেইনারের ভেতর ছবি বা ভিডিও কীভাবে ফিট হবে তা নিয়ন্ত্রণ করে (cover, contain, fill, none, scale-down)।উদাহরণ:CSSimg, video {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover; /* পিকচার রেশিও ঠিক রেখে কন্টেইনার ফিল করবে */
+}
+৫. CSS Flexbox (Responsive Layout)ফ্লেক্সবক্স দিয়ে খুব সহজে রেসপনসিভ গ্রিড তৈরি করা যায়।display: flex: ফ্লেক্স কন্টেইনার তৈরি করে।flex-direction: row | column | row-reverse | column-reverseflex-wrap: wrap (জায়গা না থাকলে ইলিমেন্ট নিচে নেমে যাবে) | nowrapflex (shorthand): flex-grow flex-shrink flex-basisউদাহরণ:CSS.flex-container {
+  display: flex;
+  flex-wrap: wrap; /* ছোট স্ক্রিনে কন্টেন্ট নিজে থেকেই নিচে নেমে যাবে */
+  gap: 20px;       /* আইটেমগুলোর মাঝখানের ফাকা জায়গা */
+}
+
+.flex-item {
+  flex: 1 1 300px; /* grow = 1, shrink = 1, flex-basis = 300px */
+  /* এর অর্থ আইটেমের মূল সাইজ ৩০০ পিক্সেল, জায়গা থাকলে বড় হবে, না থাকলে ছোট হবে */
+}
+৬. CSS Grid (Responsive Grid System)CSS Grid দিয়ে কোনো Media Query ছাড়াই রেসপনসিভ লেআউট বানানো যায়।display: grid: গ্রিড কন্টেইনার চালু করে।grid-template-columns: কলামের সংখ্যা ও সাইজ ঠিক করে।repeat(): একই সাইজের একাধিক কলাম বানায়।auto-fit / auto-fill: স্ক্রিন অনুযায়ী স্বয়ংক্রিয়ভাবে কলাম সাজায়।minmax(min, max): কলামের সর্বনিম্ন ও সর্বোচ্চ সাইজ ঠিক করে।উদাহরণ (Media Query ছাড়া সম্পূর্ণ রেসপনসিভ গ্রিড):CSS.grid-container {
+  display: grid;
+  /* প্রতিটি কলাম সর্বনিম্ন ২৫০ পিক্সেল হবে, স্ক্রিনে জায়গা থাকলে ১ ফ্র্যাকশন (1fr) নিয়ে সমানভাবে ভাগ হবে */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+৭. Modern Responsive Math Functionsআধুনিক CSS-এ তিনটি অত্যন্ত শক্তিশালী ফংশন যুক্ত হয়েছে যা রেসপনসিভ ডিজাইনে চমৎকার কাজ করে:clamp(MIN, VAL, MAX): একটি মানকে সর্বনিম্ন ও সর্বোচ্চ সীমায় আটকে রাখে।min(VAL1, VAL2): দুটি মানের মধ্যে ছোটটি বেছে নেয়।max(VAL1, VAL2): দুটি মানের মধ্যে বড়টি বেছে নেয়।উদাহরণ:CSS.responsive-title {
+  /* ফন্ট সাইজ সর্বনিম্ন 1.5rem, পছন্দনীয় সাইজ 5vw এবং সর্বোচ্চ 3rem হবে */
+  font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+.responsive-box {
+  /* স্ক্রিনের ৫০% অথবা ৪০০ পিক্সেলের মধ্যে যেটি ছোট, সেটি গ্রহণ করবে */
+  width: min(50vw, 400px);
+}
+৮. Container Queries (@container)মিডিয়া কোয়েরি পুরো ভিউপোর্ট (স্ক্রিন)-এর সাইজ ধরে কাজ করে, কিন্তু কন্টেইনার কোয়েরি নির্দিষ্ট কোনো প্যারেন্ট ডিভ (Container)-এর উইডথ ধরে ভেতরে চাইল্ডের স্টাইল পরিবর্তন করে।container-type: inline-size | size | normalcontainer-name: কন্টেইনারের নাম দেওয়া হয়।উদাহরণ:CSS/* প্যারেন্টকে কন্টেইনার হিসেবে ঘোষণা */
+.card-wrapper {
+  container-type: inline-size;
+  container-name: cardContainer;
+}
+
+/* যখন প্যারেন্ট ডিভের উইডথ ৪০০ পিক্সেল বা তার বেশি হবে */
+@container cardContainer (min-width: 400px) {
+  .card-content {
+    display: flex;
+    flex-direction: row;
+  }
+}
+সংক্ষিপ্ত সারসংক্ষেপ (Quick Reference Table)Feature / PropertyValues / SyntaxResponsive Use Case@media(min-width: 768px), orientationডিভাইসের স্ক্রিন সাইজ অনুযায়ী স্টাইল চেঞ্জ করতে।max-width100%, 1200px, 80vwকন্টেন্ট বা ইমেজ যেন স্ক্রিনের বাইরে না যায়।flex-wrapwrap, nowrapফ্ল্যাক্স আইটেমগুলোকে স্ক্রিন ছোট হলে নিচে নামাতে।grid-template-columnsrepeat(auto-fit, minmax(200px, 1fr))মিডিয়া কোয়েরি ছাড়াই অটোমেটিক গ্রিড কলাম তৈরি করতে।clamp()clamp(min, val, max)গতিশীল ফন্ট সাইজ ও স্পেসিং তৈরি করতে।object-fitcover, containইমেজের Aspect Ratio ঠিক রাখতে।@container(min-width: 400px)প্যারেন্ট কন্টেইনারের সাইজের ওপর ভিত্তি করে লেআউট বদলাতে।
+
+
+
+
+******
+
+
+
+extra small=576px
+small      =576px
+mediam     =768px
+large      =992px
+extra lsrge=1200px
+xxl        =1400px

@@ -1,0 +1,119 @@
+CSS-এ ::before এবং ::after হলো Pseudo-elements (ছদ্ম-উপাদান)। এরা ডকুমেন্টের HTML structural markup পরিবর্তন না করে কোনো এলিমেন্টের বিষয়বস্তুর আগে (::before) বা পরে (::after) অতিরিক্ত ভিজ্যুয়াল কনটেন্ট বা ডিজাইন যোগ করতে ব্যবহৃত হয়।
+
+মূল প্রপার্টি (CSS Properties / Attributes)
+::before এবং ::after দিয়ে কোনো ডিজাইন তৈরি করার সময় নির্দিষ্ট কিছু CSS প্রপার্টি সবচেয়ে বেশি ব্যবহার করা হয়:
+
+প্রপার্টি (Property)	বিবরণ	সবচেয়ে সাধারণ ভ্যালু (Common Values)
+content	(আবশ্যক) এটি ছাড়া Pseudo-element কাজ করে না।	"" (ফাঁকা), "text", url(), attr(), counter()
+display	এর লেআউট টাইপ নির্ধারণ করে।	inline-block, block, inline, flex
+position	স্থান বা পজিশন ঠিক করতে ব্যবহৃত হয়।	absolute, relative, fixed
+top / left / right / bottom	Absolute position ব্যবহারে অবস্থান নির্ধারণে।	0, 10px, 50%, auto
+width / height	Pseudo-element-এর সাইজ ঠিক করতে।	100px, 100%, auto
+background / background-color	ব্যাকগ্রাউন্ড কালার বা ইমেজ দিতে।	#ff0000, blue, url(...)
+border	বর্ডার বা শেপ (যেমন: ত্রিভুজ) তৈরি করতে।	1px solid black
+transform	এলিমেন্ট ঘুরানো, ছোট-বড় করা বা সরানোর জন্য।	rotate(45deg), scale(1.2), translate()
+transition / animation	হোভার বা অন্যান্য অ্যানিমেশনের জন্য।	all 0.3s ease
+z-index	ওভারল্যাপ বা স্ট্যাকিং অর্ডার নির্ধারণ করতে।	-1, 1, 10
+content প্রপার্টির ভ্যালু এবং এগুলোর কাজ
+Pseudo-element-এর প্রাণ বলা হয় content প্রপার্টিকে। এর বিভিন্ন ভ্যালুর প্রয়োগ নিচে দেওয়া হলো:
+
+content: ""; (ফাঁকা স্ট্রিং)
+
+ব্যবহার: আইকন, শেপ, লাইন, ব্যাকগ্রাউন্ড ওভারলে বা ডেকোরেশনের জন্য।
+
+content: "Text"; (টেক্সট স্ট্রিং)
+
+ব্যবহার: নির্দিষ্ট লেবেল, চিহ্নে বা কোটেশনে লেখার পূর্বে বা পরে স্থায়ী টেক্সট বসাতে।
+
+content: attr(attribute_name);
+
+ব্যবহার: মূল HTML এলিমেন্টের যেকোনো অ্যাট্রিবিউটের (যেমন: href, data-*, title) মান সরাসরি এনে দেখাতে।
+
+content: url(image.png);
+
+ব্যবহার: সরাসরি ছোট ইমেজ বা আইকন যোগ করতে।
+
+content: counter(name);
+
+ব্যবহার: ডায়নামিক নম্বর বা কাউন্টার তৈরি করতে।
+
+উদাহরণ (Practical Examples)
+১. টেক্সটের দুই পাশে চিহ্ন যোগ করা (Text & Quotes Example)
+কোনো ব্লককোট বা লেখার শুরুতে এবং শেষে কোটেশন চিহ্ন বসানো:
+
+HTML
+<blockquote class="quote">জীবন সুন্দর</blockquote>
+CSS
+.quote {
+  font-size: 20px;
+  position: relative;
+}
+
+/* লেখার আগে */
+.quote::before {
+  content: "“";
+  color: #e74c3c;
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+/* লেখার পরে */
+.quote::after {
+  content: "”";
+  color: #e74c3c;
+  font-size: 30px;
+  margin-left: 5px;
+}
+২. ডাইনামিক অ্যাট্রিবিউট দেখানো (attr() Example)
+HTML-এর data-tooltip বা href-এর ভ্যালু সিএসএস দিয়ে প্রিন্ট করা:
+
+HTML
+<a href="https://google.com" data-info="গুগল সার্চ">গুগল</a>
+CSS
+a {
+  position: relative;
+  text-decoration: none;
+  color: #0066cc;
+}
+
+/* লিংকের পাশে ডাটা অ্যাট্রিবিউটের টেক্সট দেখানো */
+a::after {
+  content: " (" attr(data-info) ")";
+  color: #666;
+  font-size: 12px;
+}
+৩. কাস্টম বর্ডার / লাইন যোগ করা (content: "" Shape Example)
+একটি বাটনের নিচে হোভার করলে অ্যানিমেটেড লাইন তৈরি করা:
+
+HTML
+<button class="btn">Hover Me</button>
+CSS
+.btn {
+  position: relative;
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* বাটনের নিচে ব্যাকগ্রাউন্ড দিয়ে আন্ডারলাইন তৈরি */
+.btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%; /* শুরুতে ০% থাকবে */
+  height: 2px;
+  background-color: #3498db;
+  transition: width 0.3s ease; /* অ্যানিমেশন 효과 */
+}
+
+/* হোভার করলে লাইন পুরো ১০০% হবে */
+.btn:hover::after {
+  width: 100%;
+}
+জরুরি কিছু বিষয়
+Self-closing ট্যাগ: যেসব HTML ট্যাগের ক্লোজিং ট্যাগ নেই (যেমন: <img>, <input>, <br>, <hr>), সেগুলোতে ::before বা ::after সরাসরি কাজ করে না।
+
+সিঙ্গেল বনাম ডাবল কোলন: CSS3 অনুযায়ী Pseudo-element-এর ক্ষেত্রে ডাবল কোলন (::before) ব্যবহার করা মানসম্মত। তবে পুরোনো ব্রাউজার সমর্থনের জন্য সিঙ্গেল কোলন (:before) লিখলেও কাজ করে।

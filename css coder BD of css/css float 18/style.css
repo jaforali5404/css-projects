@@ -1,0 +1,24 @@
+.box{
+    height: 120px;
+    width: 120px;
+    border: 1px solid #000;
+}
+.box1{
+    background: red;
+    float: left;
+}
+.box2{
+    background: lightgreen;
+    float: left;
+}
+.box3{
+    background: skyblue;
+    float: right;
+}
+.box4{
+    background: yellow;
+    float: right;
+}
+p{
+    clear: both;
+}

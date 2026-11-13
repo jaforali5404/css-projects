@@ -1,0 +1,51 @@
+CSS-এ Navbar (Navigation Bar) এবং Menubar তৈরি বা কাস্টমাইজ করার জন্য HTML Structure (Element) এবং CSS (Property & Value)-এর সঠিক ব্যবহার জানা জরুরি। CSS-এ যাকে আমরা Property বলি, HTML-এ সেগুলোকে Attribute এবং Element হিসেবে ব্যবহার করা হয়।নিচে Element, Attribute এবং CSS Properties (Key & Values)-এর বিস্তারিত আলোচনা দেওয়া হলো:১. HTML Elements & Attributes (গঠন তৈরির জন্য)Navbar তৈরির মূল ভিত্তি হলো সঠিক HTML Elements ও Attributes বেছে নেওয়া।ধরননামব্যবহার ও বিবরণElement<nav>Semantic HTML5 ট্যাগ, যা ব্রাউজারকে নির্দেশ করে এটি একটি নেভিগেশন সেকশন।Element<ul> ও <li>মেনুর আইটেমগুলোকে লিস্ট বা তালিকা আকারে সাজানোর জন্য ব্যবহৃত হয়।Element<a>প্রতিটি মেনু আইটেমকে ক্লিকেবল বা লিংক করার জন্য ব্যবহার করা হয়।AttributeclassCSS দিয়ে সিলেক্ট করার জন্য ক্লাসের নাম দেওয়া হয় (যেমন: <nav class="navbar">)Attributehref<a> ট্যাগের ভেতরের এই অ্যাট্রিবিউট নির্দিষ্ট পেজ লিংক তৈরি করে (যেমন: href="#home")২. CSS Elements / Properties & Values (ডিজাইন করার জন্য)Navbar সাজানোর জন্য বহুল ব্যবহৃত CSS Property এবং সেগুলোর Values:Layout control (display):display: flex; — সবচেয়ে জনপ্রিয় পদ্ধতি। আইটেমগুলোকে সহজে এক লাইনে সাজাতে ব্যবহৃত হয়।display: inline-block; — <li> আইটেমগুলোকে পাশাপাশি আনার পুরোনো পদ্ধতি।Spacing & Alignment (justify-content, gap):justify-content: space-between; — লোগো এবং মেনু আইটেমগুলোকে দুই প্রান্তে ছড়িয়ে দেয়।justify-content: center; / flex-end; — মেনু আইটেম মাঝে বা ডানপাশে রাখতে ব্যবহৃত হয়।gap: 20px; — মেনু আইটেমগুলোর মাঝে নির্দিষ্ট দূরত্ব তৈরি করে।Positioning (position):position: fixed; — পেজ স্ক্রোল করলেও নেভবারটি একদম উপরে আটকে থাকে।position: sticky; — নির্দিষ্ট জায়গা স্ক্রোল করার পর নেভবার আটকে থাকে।top: 0; left: 0; width: 100%; — স্ক্রিনের পুরো জুড়ে বসানোর জন্য ব্যবহৃত হয়।Styling & Clean up (list-style, text-decoration):list-style: none; — <ul> এর ডিফল্ট বুলেট পয়েন্ট তুলে ফেলার জন্য।text-decoration: none; — <a> ট্যাগের নিচের ডিফল্ট আন্ডারলাইন সরানোর জন্য।Pseudo-classes (:hover):a:hover — মাউস কার্সার মেনু আইটেমের ওপর নিলে কালার বা স্টাইল পরিবর্তন করার জন্য।৩. প্র্যাকটিক্যাল কোড উদাহরণএকটি সম্পূর্ণ আধুনিক, ফ্লেক্সবক্সভিত্তিক responsive-ready Navbar তৈরির HTML এবং CSS কোড:HTML StructureHTML<nav class="navbar">
+  <div class="logo">MyBrand</div>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+CSS StylingCSS/* ১. মূল Navbar এর স্টাইলিং (Flexbox container) */
+.navbar {
+  display: flex;                   /* Element-গুলোকে এক লাইনে আনার জন্য */
+  justify-content: space-between;  /* লোগো বামে ও মেনু ডানে সরানোর জন্য */
+  align-items: center;             /* সব উপাদান লম্বালম্বিভাবে মাঝে রাখার জন্য */
+  background-color: #1e293b;       /* ডার্ক ব্যাকগ্রাউন্ড কালার */
+  padding: 15px 30px;              /* ভেতরের স্পেসিং */
+  position: sticky;                /* পেজের উপরে স্ক্রোল করার সময় আটকে থাকার জন্য */
+  top: 0;                          /* একদম উপরে বসবে */
+}
+
+/* ২. লোগোর স্টাইল */
+.navbar .logo {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ৩. মেনু লিস্ট (ul) ক্লিনআপ */
+.nav-links {
+  display: flex;                   /* li আইটেমগুলোকে এক সারিতে আনার জন্য */
+  list-style: none;                /* ডিফল্ট ডট/বুলেট পয়েন্ট সরানোর জন্য */
+  gap: 20px;                       /* প্রতিটি মেনুর মাঝের দূরত্ব */
+  margin: 0;
+  padding: 0;
+}
+
+/* ৪. লিংক (a) স্টাইলিং */
+.nav-links a {
+  color: #cbd5e1;                  /* টেক্সট কালার */
+  text-decoration: none;           /* টেক্সটের নিচের আন্ডারলাইন সরানোর জন্য */
+  font-size: 16px;
+  padding: 8px 12px;
+  transition: all 0.3s ease;       /* স্মুথ অ্যানিমেশনের জন্য */
+}
+
+/* ৫. মাউস হোভার ইফেক্ট (:hover Pseudo-class) */
+.nav-links a:hover {
+  color: #ffffff;                  /* হোভার করলে টেক্সট সাদা হবে */
+  background-color: #3b82f6;       /* নীল ব্যাকগ্রাউন্ড */
+  border-radius: 5px;              /* কোণাগুলো সামান্য গোল হবে */
+}

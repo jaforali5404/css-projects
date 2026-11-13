@@ -1,0 +1,37 @@
+.box{
+    height: 150px;
+    width: 150px;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    /* displar inline dewar fole block ta inline hoye gese */
+    display: inline;
+    /* akhanew dispaly content bebohar kora jay */
+    /* display: contents; */
+
+}
+.box1{
+    background: hotpink;
+}
+.box2{
+    background: lightgreen;
+    /* display none deyai box2 udhaw hoye jabe */
+    display: none;
+}
+.box3{
+    background: skyblue;
+}
+
+/* display block dewar fole inline ta block hoye gese */
+b{
+/* display: block;     */
+display:inline-block;
+background: lightseagreen;
+height: 100px;
+width: 100px;
+margin-bottom: 10px;
+padding: 10px;
+/* display contains dewar fole upore attribute gulo kaj korbe na abong box gulo udhaw hoye jabe */
+/* display: contents; */
+}

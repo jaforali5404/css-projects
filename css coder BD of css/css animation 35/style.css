@@ -1,0 +1,63 @@
+.box{
+    height: 200px;
+    width: min(200px, 300px);
+    background: salmon;
+    margin: 0px auto;
+    animation-name: colorchange;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+@keyframes colorchange {
+    from{
+        background: green;
+    }
+    to{
+        background: gold;
+    }
+    
+}
+/* jodi aker idhik bebohar hoy tahale from ba to bebohar lorbona */
+.box1{
+    height: 200px;
+    width: min(200px, 300px);
+    background: yellow;
+    margin: 0px auto;
+    animation-name: colorchange;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+@keyframes colorchange {
+    0%{
+        background: green;
+    }
+    50%{
+        background: lightcoral;
+    }
+    100%{
+        background: red;
+    }
+    
+}
+.fboll{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    margin-top: 50px;
+    animation: foodbollanimation 3s infinite linear;
+    
+}
+/* linear dile ak mape gurte thakbe */
+@keyframes foodbollanimation{
+    0%{
+        transform: rotate(0deg);
+        left: 0px;
+    }
+    50%{
+        transform: rotate(360deg);
+        left: 600px;
+    }
+        100%{
+        transform: rotate(0deg);
+        left: 0px;
+    }
+}

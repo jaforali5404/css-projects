@@ -1,0 +1,45 @@
+.menu{
+    background: orangered;
+}
+.menu ul{
+    margin: 5px;
+    list-style-type: none;
+}
+.menu ul li{
+    display: inline-block;
+}
+.menu ul li a{
+    text-decoration: none;
+    padding: 8px 20px;
+    display:inline-block;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+.menu ul li a:hover{
+    color: green;
+}
+
+
+.menu2{
+    margin-top: 50px;
+}
+.menu2 ul{
+    margin: 5px;
+    list-style-type: none;
+}
+.menu2 ul li{
+    display: inline-block;
+}
+.menu2 ul li a{
+    text-decoration: none;
+    padding: 8px 20px;
+    display:inline-block;
+    color: #000;
+    background-color: orange;
+    border-radius: 30px;
+    border-right: 1px solid #fff;
+}
+.menu2 ul li a:hover{
+    color: #fff;
+    background: #000;
+}

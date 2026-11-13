@@ -1,0 +1,12 @@
+.title{
+    /* color: rgb(0, 0, 255); */
+    /* rgba te alpha diye ofacity kore color komano jay ati dewor karon holo background color dekha jay */
+    /* amra color code,name,rgba,rgb its diye color kora jay */
+    color: rgba(255, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .4);
+}
+/* akhane color namber er maddhome color poriborton kora jay */
+.title1{
+    color: #0000ff;
+    background-color: rgb(0, 0, 0);
+}

@@ -1,0 +1,34 @@
+CSS-এ সাধারণত অ্যাট্রিবিউট (Attribute) শব্দটি এইচটিএমএল (HTML)-এর ক্ষেত্রে ব্যবহৃত হয়, আর CSS-এর ক্ষেত্রে এগুলোকে বলা হয় প্রপার্টি (Property) এবং ভ্যালু (Value)।  তবে CSS-এ all নামের একটি বিশেষ প্রপার্টি রয়েছে, যা কোনো এলিমেন্টের আগের সমস্ত স্টাইল রিচেট (Reset) বা পরিবর্তন করতে ব্যবহার করা হয়।নিচে CSS-এর all প্রপার্টি এবং অন্যান্য গুরুত্বপূর্ণ CSS প্রপার্টি ও ভ্যালু উদাহরণসহ সংক্ষেপে আলোচনা করা হলো:  ১. CSS-এর all প্রপার্টি  all প্রপার্টি ব্যবহার করে কোনো এইচটিএমএল এলিমেন্টের ওপর প্রয়োগ করা অন্যান্য সব স্টাইলকে একবারে ডিফল্ট বা অন্য কোনো অবস্থায় ফিরিয়ে নেওয়া যায়।  ভ্যালুসমূহ:  initial: প্রপার্টিগুলোকে ব্রাউজারের একদম মূল ডিফল্ট (Initial) ভ্যালুতে সেট করে।  inherit: প্যারেন্ট (Parent) বা মূল এলিমেন্টের ভ্যালু গ্রহণ করে।unset: যদি প্রপার্টি ইনহেরিট করার মতো হয় তবে inherit করে, না হলে initial সেট করে।  revert: ব্রাউজারের নিজস্ব ডিফল্ট স্টাইলে ফিরিয়ে নিয়ে যায়।উদাহরণ:  CSS/* সকল কাস্টম স্টাইল মুছে ব্রাউজার ডিফল্টে ফিরিয়ে নিতে */
+.card {
+  background-color: blue;
+  color: white;
+  all: unset; /* আগের ব্যাকগ্রাউন্ড ও কালার প্রভাব ফেলবে না */
+}
+২. প্রধান প্রধান CSS প্রপার্টি (Property) ও তাদের ভ্যালু (Value)CSS-এর প্রপার্টিগুলোকে কয়েকটি প্রধান ক্যাটাগরিতে ভাগ করা যায়:  ক. কালার ও ব্যাকগ্রাউন্ড (Color & Background)  color: লেখার রঙ নির্ধারণ করে।  Values: Hex, RGB, HSL, Named colors (red, #ff0000, rgb(255, 0, 0))।background-color: ব্যাকগ্রাউন্ডের রঙ নির্ধারণ করে।  Values: Color codes, transparent।CSSp {
+  color: #333333;
+  background-color: #f4f4f4;
+}
+খ. ফন্ট ও টেক্সট স্টাইলিং (Font & Text)font-size: ফন্টের আকার ঠিক করে।  Values: px, rem, em, % (যেমন: 16px, 1.2rem)font-family: ফন্টের ধরন নির্ধারণ করে।  Values: Arial, Helvetica, sans-seriftext-align: লেখা কোন দিকে থাকবে তা ঠিক করে।  Values: left, right, center, justifyCSSh1 {
+  font-size: 24px;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+গ. বক্স মডেল প্রপার্টি (Box Model: Margin, Padding, Border, Size)width / height: এলিমেন্টের চওড়া ও উচ্চতা নির্ধারণ করে।  Values: px, %, vh, vw, automargin: এলিমেন্টের বাইরের ফাঁকা জায়গা নির্ধারণ করে।  Values: 10px, 10px 20px, autopadding: এলিমেন্টের ভিতরের কন্টেন্ট এবং বর্ডার-এর মাঝের ফাঁকা জায়গা।  Values: 5px, 15pxborder: চারপাশের বর্ডার বা সীমানা দেয়।  Values: 1px solid black, 2px dashed redCSS.box {
+  width: 300px;
+  padding: 20px;
+  margin: 0 auto; /* সেন্টার করতে */
+  border: 1px solid #ccc;
+}
+ঘ. লেআউট ও পজিশনিং (Layout & Display)display: এলিমেন্টটি পেজে কীভাবে প্রদর্শিত হবে।  Values: block, inline, inline-block, flex, grid, noneposition: এলিমেন্টের অবস্থান নির্ধারণ করার পদ্ধতি।  Values: static, relative, absolute, fixed, stickyCSS.container {
+  display: flex;
+  justify-content: space-between;
+}
+৩. এইচটিএমএল-এ CSS অ্যাট্রিবিউট সিলেক্টর (Attribute Selector)এছাড়াও, এইচটিএমএল অ্যাট্রিবিউটের ওপর ভিত্তি করে CSS প্রয়োগ করা যায়। একে Attribute Selector বলা হয়।  CSS/* যেসব input-এর type="text", সেগুলোর ওপর স্টাইল হবে */
+input[type="text"] {
+  border: 1px solid blue;
+}
+
+/* নির্দিষ্ট কোনো attribute থাকলে স্টাইল হবে */
+a[target="_blank"] {
+  color: green;
+}

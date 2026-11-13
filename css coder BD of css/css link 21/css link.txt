@@ -1,0 +1,51 @@
+CSS-এ লিংক (Hyperlink) স্টাইল করার জন্য মূলত Pseudo-classes ব্যবহার করা হয়। একটি লিংকের ৪টি প্রধান অবস্থা (State) থাকে। এগুলোকে সঠিকভাবে স্টাইল করার মাধ্যমে ইউজার এক্সপেরিয়েন্স অনেক সুন্দর করা যায়।লিংকের ৪টি মূল Pseudo-classPseudo-classবিবরণ:linkসাধারণ বা এখনো ক্লিক না করা (Unvisited) লিংকের জন্য।:visitedব্যবহারকারী যেসব লিংক ইতিমধ্যে ভিজিট করেছে সেগুলোর জন্য।:hoverমাউসের কার্সার লিংকের ওপর নিলে কেমন দেখাবে তার জন্য।:activeলিংকে মাউস দিয়ে চাপ দিয়ে ধরে রাখার (Click করার) মুহূর্তের জন্য।গুরুত্বপূর্ণ নিয়ম (LVHA Order): CSS code লেখার সময় অবশ্যই :link -> :visited -> :hover -> :active — এই ধারাবাহিকতা বজায় রাখতে হবে। তা না হলে স্টাইল সঠিকভাবে কাজ করবে না। (সংক্ষেপে মনে রাখার সহজ উপায়: Love VHAte)।প্রতিটি এলিমেন্টের ব্যাখ্যা ও উদাহরণ১. :link (Unvisited Link)ব্যবহারকারী এখনো যে লিংকে ক্লিক করেননি, তার স্টাইল নির্ধারণ করতে এটি ব্যবহৃত হয়।CSSa:link {
+  color: blue; /* লিংক নীল রঙের হবে */
+  text-decoration: none; /* নিচের দাগ (underline) তুলে দেওয়া হলো */
+}
+২. :visited (Visited Link)ব্যবহারকারী যে লিংকে অন্তত একবার ভিজিট করে ফেলেছেন, সেটির স্টাইল বদলাতে এটি কাজ করে।CSSa:visited {
+  color: purple; /* ভিজিট করা লিংক বেগুনি রঙের হবে */
+}
+৩. :hover (Mouse Hover)যখন কেউ লিংকের ওপর মাউসের পয়েন্টার আনবে, তখন এই স্টাইলটি সক্রিয় হবে।CSSa:hover {
+  color: red; /* মাউস আনলে রঙ লাল হবে */
+  text-decoration: underline; /* মাউস আনলে নিচে দাগ দেখা যাবে */
+}
+৪. :active (Active Link)মাউসের লেফট বাটন দিয়ে লিংকে প্রেস করার ঠিক ওই মুহূর্তের প্রতিক্রিয়া দেখানোর জন্য এটি ব্যবহৃত হয়।CSSa:active {
+  color: green; /* ক্লিক করার মুহূর্তে সবুজ রঙ দেখাবে */
+}
+সম্পূর্ণ উদাহরণ (HTML + CSS)HTMLHTML<a href="https://example.com" class="my-link">এখানে ক্লিক করুন</a>
+CSSCSS/* ১. সাধারণ অবস্থা */
+.my-link:link {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ২. ভিজিট করা অবস্থা */
+.my-link:visited {
+  color: #663399;
+}
+
+/* ৩. মাউস নিলে */
+.my-link:hover {
+  color: #ff4500;
+  text-decoration: underline;
+}
+
+/* ৪. ক্লিক করার মুহূর্তে */
+.my-link:active {
+  color: #008000;
+}
+বোনাস: লিংককে বাটন আকারে সাজানোলিংককে শুধু সাধারণ লেখার মতো না রেখে সুন্দর একটি বাটন (Button) হিসেবেও CSS দিয়ে তৈরি করা যায়:CSSa.button-link:link, a.button-link:visited {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+a.button-link:hover, a.button-link:active {
+  background-color: #0056b3;
+}

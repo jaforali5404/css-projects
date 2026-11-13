@@ -1,0 +1,13 @@
+.box{
+    background-color: #e7e7e7;
+    height: 220px;
+    width: 220px;
+    /* padding: 20px; */
+    /* jodi ak pase faka jayga nite chai tahale padding left nite hobe baki 3 side akoi vabe */
+    /* padding-left: 100px;
+    padding-right: 50px;
+    padding-top: 0px;
+    padding-bottom: 20px; */
+    akhane left right top bottom aksate kora ase r padding system ta ghorir katar moto ghore
+    padding: 30px 100px 50px 10px;
+}

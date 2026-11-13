@@ -1,0 +1,131 @@
+CSS এবং HTML দিয়ে ড্রপ-ডাউন মেনু তৈরি করতে নির্দিষ্ট কিছু এলিমেন্ট (Elements), অ্যাট্রিবিউট (Attributes) এবং CSS প্রপার্টি/ভ্যালু (Properties & Values) ব্যবহৃত হয়।
+
+ডিজাইনের ওপর ভিত্তি করে ড্রপ-ডাউন মেনু প্রধানত ২ উপায়ে করা যায়:
+১. HTML-এর নিজস্ব <select> ট্যাগ ব্যবহার করে।
+২. CSS Hover/Flexbox ব্যবহার করে কাস্টম নেভিগেশন ড্রপ-ডাউন মেনু তৈরি করে।  
+www.w3.org
++ 1
+
+১. HTML ড্রপ-ডাউন এলিমেন্ট ও অ্যাট্রিবিউট  
+Flowbite
++ 1
+HTML ড্রপ-ডাউন তৈরি করতে যেসব ট্যাগ (এলিমেন্ট) ও অ্যাট্রিবিউট লাগে:  
+Hyperskill
+
+এলিমেন্ট (Elements):
+<select>: ড্রপ-ডাউন লিস্টের প্রধান কন্টেইনার ট্যাগ।  
+GeeksforGeeks
+
+<option>: লিস্টের ভেতরের প্রতিটি অপশনকে নির্দেশ করে।  
+www.w3.org
+
+<optgroup>: অপশনগুলোকে ক্যাটাগরি অনুযায়ী গ্রুপ বা ভাগ করার জন্য ব্যবহৃত হয়।
+
+গুরুত্বপূর্ণ অ্যাট্রিবিউট (Attributes) ও ভ্যালু:
+অ্যাট্রিবিউট	কোন ট্যাগে বসে	কাজের বিবরণ	উদাহরণ
+name	<select>	ব্যাকএন্ডে বা ফর্মে ডেটা পাঠানোর নাম।	name="country"
+id	<select>	CSS বা JS-এর মাধ্যমে স্টাইল/হ্যান্ডেল করার জন্য ID।	id="user-country"
+disabled	<select>, <option>	নির্দিষ্ট ড্রপ-ডাউন বা অপশন নিষ্ক্রিয় করার জন্য।	disabled
+multiple	<select>	একাধিক অপশন নির্বাচন (Select) করার অনুমতি দিতে।	multiple
+required	<select>	ফর্ম সাবমিট করার আগে অপশন সিলেক্ট করা বাধ্যতামূলক করতে।	required
+value	<option>	ব্যাকএন্ডে পাঠানোর জন্য অপশনের নিজস্ব মান বা ভ্যালু।	value="bd"
+selected	<option>	পেজ লোড হওয়ার সময় ডিফল্টভাবে নির্বাচন করা থাকতে।	selected
+label	<optgroup>	গ্রুপের নাম বা শিরোনাম দিতে।	label="Asia"
+২. কাস্টম CSS ড্রপ-ডাউনে ব্যবহৃত প্রপার্টি ও ভ্যালু  
+Mimo
+কাস্টম ড্রপ-ডাউন নেভিগেশন মেনু (Navigation Menu) বানাতে CSS-এর নিচের প্রপার্টিগুলো ব্যবহৃত হয়:  
+Slider Revolution
+
+position: relative / absolute: মূল মেনুকে relative এবং ড্রপ-ডাউন মেনুকে absolute পজিশনে রাখার জন্য।  
+Mimo
+
+display: none / block: ডিফল্ট অবস্থায় মেনু লুকিয়ে রাখতে (none) এবং হোভার করলে তা দৃশ্যমান করতে (block)।  
+GeeksforGeeks
+
+:hover (Pseudo-class): মাউসের কার্সার নিলে ড্রপ-ডাউন মেনু শো করানোর জন্য।
+
+z-index: ড্রপ-ডাউন মেনুটি যেন ওয়েবসাইটের অন্যান্য কন্টেন্টের উপরে ভেসে থাকে।
+
+transition: মেনুটি আসার সময় স্মুথ অ্যানিমেশন বা ইফেক্ট দিতে।  
+Slider Revolution
+
+৩. সম্পূর্ণ কোড উদাহরণ (HTML + CSS)  
+Slider Revolution
+নিচে CSS দিয়ে একটি মডার্ন নেভিগেশন ড্রপ-ডাউন মেনু তৈরির প্র্যাকটিক্যাল উদাহরণ দেওয়া হলো:  
+Slider Revolution
+
+HTML
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Dropdown Menu Example</title>
+  <style>
+    /* ১. মূল কন্টেইনার স্টাইল */
+    .dropdown {
+      position: relative; /* সাব-মেনু যেন এটার সাপেক্ষে পজিশন নেয় */
+      display: inline-block;
+    }
+
+    /* ২. ড্রপ-ডাউন বাটন স্টাইল */
+    .dropbtn {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    /* ৩. ড্রপ-ডাউন মেনু (ডিফল্ট অবস্থায় লুকানো থাকবে) */
+    .dropdown-content {
+      display: none; /* মেনু হাইড করে রাখা হলো */
+      position: absolute; /* বাটনের ঠিক নিচে বসাতে */
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1; /* অন্য কন্টেন্টের উপরে রাখতে */
+      border-radius: 4px;
+    }
+
+    /* ৪. ড্রপ-ডাউনের ভিতরের লিঙ্কগুলোর স্টাইল */
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* ৫. লিঙ্কে মাউস নিলে ব্যাকগ্রাউন্ড পরিবর্তন */
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* ৬. বাটনে মাউস নিলে (Hover) ড্রপ-ডাউন মেনুটি দেখা যাবে */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* ৭. হোভার করলে বাটনের কালার পরিবর্তন */
+    .dropdown:hover .dropbtn {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>CSS ড্রপ-ডাউন মেনু উদাহরণ</h2>
+
+  <!-- ড্রপ ডাউন এলিমেন্ট 구조 -->
+  <div class="dropdown">
+    <button class="dropbtn">সার্ভিসসমূহ ▼</button>
+    <div class="dropdown-content">
+      <a href="#web">ওয়েব ডিজাইন</a>
+      <a href="#graphics">গ্রাফিক্স ডিজাইন</a>
+      <a href="#seo">এসইও (SEO)</a>
+    </div>
+  </div>
+
+</body>
+</html>

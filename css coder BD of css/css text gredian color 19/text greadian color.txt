@@ -1,0 +1,15 @@
+CSS-এ কোনো টেক্সটে একাধিক রঙের গ্র্যাডিয়েন্ট (Gradient Color) দিতে background-image, -webkit-background-clip, এবং -webkit-text-fill-color প্রপার্টিগুলোর সমন্বয় ব্যবহার করা হয়।ডিফল্টভাবে গ্র্যাডিয়েন্ট কেবল কোনো এলিমেন্টের ব্যাকগ্রাউন্ডে কাজ করে। কিন্তু টেক্সটে এই ফিল্টারিং প্রয়োগ করার জন্য গ্র্যাডিয়েন্ট ব্যাকগ্রাউন্ডটি কেটে (clip) ঠিক টেক্সটের মাপে নিয়ে আসতে হয় এবং টেক্সটের নিজস্ব রঙ ট্রান্সপারেন্ট (স্বচ্ছ) করে দিতে হয়।প্রয়োজনীয় CSS প্রপার্টিসমূহbackground-image: টেক্সটের পেছনে পছন্দের গ্র্যাডিয়েন্ট কালার সেট করার জন্য।-webkit-background-clip: text;: ব্যাকগ্রাউন্ডের রঙকে শুধু টেক্সটের আকৃতিতেই সীমাবদ্ধ রাখার জন্য।-webkit-text-fill-color: transparent;: টেক্সটের মূল বা মূল রঙ মুছে ব্যাকগ্রাউন্ডের গ্র্যাডিয়েন্টকে দৃশ্যমান করার জন্য।সহজ কোড উদাহরণCSS.gradient-text {
+  font-size: 40px;
+  font-weight: bold;
+  
+  /* ১. গ্র্যাডিয়েন্ট ব্যাকগ্রাউন্ড তৈরি */
+  background-image: linear-gradient(45deg, #ff416c, #8a2387);
+  
+  /* ২. ব্যাকগ্রাউন্ডটি কেবল টেক্সটের মাপে ক্লিপ করা */
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  /* ৩. টেক্সটের মূল রঙ ট্রান্সপারেন্ট করা */
+  -webkit-text-fill-color: transparent;
+}
+জনপ্রিয় কয়েকটি গ্র্যাডিয়েন্ট প্যাটার্নগ্র্যাডিয়েন্টের ধরনCSS প্রপার্টি উদাহরণLinear (একপাশ থেকে অন্যপাশে)linear-gradient(to right, #f857a6, #ff5858)Diagonal (কোনাকুনি)linear-gradient(135deg, #4158D0, #C850C0, #FFCC70)Radial (কেন্দ্র থেকে বাইরে)radial-gradient(circle, #ff007f, #7928ca)

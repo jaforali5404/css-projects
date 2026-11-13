@@ -1,0 +1,33 @@
+.p1::first-line{
+    font-size: 40px;
+    color: red;
+}
+.p1::selection{
+    background-color: blue;
+    color: darkgrey;
+}
+input::placeholder{
+    color: blue;
+}
+input:focus{
+    background-color: black;
+    color: beige;
+}
+.p2:hover{
+   color: blue;
+}
+input:read-only{
+    background: #ddd;
+    color: black;
+    border-radius: 5px;
+}
+a:active{
+    color: green;
+}
+a:visited{
+    color: red;
+}
+/* .p1::first-letter{
+    font-size: 40px;
+    color: red;
+} */

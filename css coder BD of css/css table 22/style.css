@@ -1,0 +1,28 @@
+table{
+    width: 500px;
+    border-collapse: collapse;
+}
+table tr:hover{
+    background: #dadada;
+    
+}
+table tr:nth-child(odd){
+    background: #dadada;
+}
+protek ta line er nise underline dewor jonno bebohar kora hoy
+table tr{
+    border-bottom: 2px solid #2222;
+}
+
+table tr th{
+    padding: 5px;
+    background: #afafaf;
+}
+table tr td{
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+table, tr, th, td{
+    /* border: 2px solid #00ff; */
+}

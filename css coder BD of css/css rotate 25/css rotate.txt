@@ -1,0 +1,67 @@
+CSS-এ কোনো HTML Attribute বা Element হিসেবে rotate ব্যবহৃত হয় না। rotate মূলত CSS-এর Transform Property-র একটি Function, অথবা আধুনিক CSS-এর একটি Individual Property।
+
+এর মাধ্যমে কোনো HTML Element-কে (যেমন: ছবি, টেক্সট, ডিভ বা বক্স) ঘড়ির কাটার দিকে বা বিপরীতে ঘোরানো (Rotate) যায়।
+
+১. rotate ব্যবহারের মূল নিয়ম ও Property
+CSS-এ Element ঘোরানোর প্রধানত দুটি পদ্ধতি রয়েছে:
+
+transform: rotate() (ঐতিহ্যবাহী পদ্ধতি): transform প্রপার্টির মাধ্যমে এটি লেখা হয়।
+
+rotate (আধুনিক পদ্ধতি): সরাসরি rotate প্রপার্টি লিখে মান বসানো যায়।
+
+২. ঘূর্ণন একক বা Value Type
+ঘোরানোর জন্য মান (Value) হিসেবে প্রধানত Degree (deg) ব্যবহার করা হয়:
+
+ধন্যাত্মক মান (positive deg - যেমন: 40deg): ঘড়ির কাটার দিকে (Clockwise) ঘোরায়।
+
+ঋণাত্মক মান (negative deg - যেমন: -40deg): ঘড়ির কাটার বিপরীত দিকে (Anti-clockwise) ঘোরায়।
+
+এছাড়াও rad (radians), grad (gradians), এবং turn (যেমন: 0.5turn মানে ১৮০ ডিগ্রি) ব্যবহার করা যায়।
+
+৩. কোড উদাহরণ ও ব্যাখ্যা
+একটি HTML Element (যেমন: <div class="box">)-কে ঘোরানোর সম্পূর্ণ কোড নিচে দেওয়া হলো:
+
+HTML Part:
+
+HTML
+<div class="box">ঘুরে যাবে</div>
+CSS Part:
+
+CSS
+/* পদ্ধতি ১: transform প্রপার্টি দিয়ে (সবচেয়ে বেশি প্রচলিত) */
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  
+  /* ৪৫ ডিগ্রি ঘড়ির কাটার দিকে ঘোরাতে */
+  transform: rotate(45deg); 
+}
+
+/* পদ্ধতি ২: সরাসরি rotate প্রপার্টি দিয়ে (আধুনিক CSS) */
+.box-modern {
+  rotate: -90deg; /* ৯০ ডিগ্রি ঘড়ির কাটার বিপরীতে ঘোরাতে */
+}
+৪. ৩-ডি এবং বিভিন্ন Axis-এ Rotate করা
+আপনি চাইলে Element-কে কেবল ২D তলেই নয়, ৩D রূপেও ঘোরকাতে পারেন:
+
+rotateX(angle): Element-কে Horizontal/X-অক্ষ বরাবর ওপর-নিচে ঘোরায়।
+
+rotateY(angle): Element-কে Vertical/Y-অক্ষ বরাবর ডান-বামে ঘোরায় (যেমন: দরজার মতো খোলা)।
+
+rotateZ(angle): এটি সাধারণ 2D ঘূর্ণনের মতোই কাজ করে।
+
+CSS
+.card-flip {
+  /* Y-অক্ষ বরাবর ১৮০ ডিগ্রি ঘুরিয়ে উল্টে দেওয়া */
+  transform: rotateY(180deg);
+}
+৫. ঘূর্ণন কেন্দ্র পরিবর্তন (transform-origin)
+ডিফল্টভাবে যেকোনো Element তার ঠিক মাঝখান (Center)-কে কেন্দ্র করে ঘোরে। কিন্তু আপনি যদি কোণা বা নির্দিষ্ট কোনো বিন্দু কেন্দ্র করে ঘোরকাতে চান, তবে transform-origin ব্যবহার করতে হবে:
+
+CSS
+.door {
+  /* বাম পাশের ওপরের কোণাকে কেন্দ্র করে ঘোরাবে */
+  transform-origin: top left;
+  transform: rotate(30deg);
+}

@@ -1,0 +1,10 @@
+body{
+    background: #faa;
+}
+img{
+    width: 100%;
+    opacity: .60;
+}
+img:hover{
+    opacity: 1;
+}

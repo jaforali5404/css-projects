@@ -1,0 +1,35 @@
+.containar{
+    height: 600px;
+    width: 600px;
+    background: #adadad;
+    position: absolute;
+}
+.box{
+    height: 200px;
+    width: 200px;
+    font-size: 32px;
+    text-align: center;
+    padding: 20px;
+}
+.box1{
+    background: lightblue;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    z-index: 3;
+}
+.box2{
+    background: lightgreen;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    z-index: 2;
+}
+    
+.box3{
+    background: lightsalmon;
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    
+}

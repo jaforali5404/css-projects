@@ -1,0 +1,71 @@
+CSS Vertical Menu এবং Sidebar Menu তৈরির সময় কাঠামো সাজানোর জন্য HTML Elements, সেগুলোর রূপদানের জন্য CSS Properties (Attributes/Values), এবং এক্সেসিবিলিটির জন্য ARIA Attributes ব্যবহার করা হয়।নিচে গুরুত্বপূর্ণ Element, Attribute এবং Value-র তালিকা ও বিবরণ দেওয়া হলো:১. প্রধান HTML Elements ও Attributes<nav>: নেভিগেশন লিংকের তালিকা ধারণ করে।Attribute: aria-label="Side Navigation" (স্ক্রিন রিডারকে মেনুর নাম জানায়)।<aside>: পেজের মূল কনটেন্টের পাশে সাইডবার তৈরি করতে ব্যবহৃত হয়।Attribute: role="complementary" (বোঝায় এটি পরিপূরক তথ্য)।<ul> ও <li>: ভার্টিকাল মেনুর আইটেমগুলোকে সুবিন্যস্ত তালিকা আকারে সাজায়।<a>: প্রতিটি মেনু অপশনের ক্লিকযোগ্য লিংক তৈরি করে।Attribute: aria-current="page" (ব্যবহারকারী বর্তমানে যে পেজে আছেন তা নির্দেশ করে)।২. মূল CSS Properties & Values (Attributes)PropertyValueকাজ ও বিবরণdisplayflex / blockflex দিয়ে flex-direction: column সেট করলে উপাদানগুলো উপর-নিচে (Vertical) সারিবদ্ধ হয়।flex-directioncolumnFlex container-এর চাইল্ডগুলোকে ভার্টিকালি সাজায়।positionfixed / stickyfixed দিয়ে স্ক্রিনের সাথে স্থায়ীভাবে আটকে রাখা হয়; sticky দিয়ে স্ক্রোল করার নির্দিষ্ট মুহূর্তে আটকানো হয়।width250px / 100%সাইডবার বা ভার্টিকাল মেনুর চওড়া নির্ধারণ করে।height100vhপুরো স্ক্রিনের সমান উচ্চতা (Viewport Height) দেওয়ার জন্য ব্যবহার করা হয়।top / left0position: fixed বা sticky থাকলে মেনুটি স্ক্রিনের কোন পাশে আটকে থাকবে তা ঠিক করে।৩. সম্পূর্ণ কোড উদাহরণVertical Sidebar Menu (HTML + CSS)HTML<!-- HTML Structure -->
+<aside class="sidebar-container" role="complementary">
+  <nav class="vertical-menu" aria-label="Main Navigation">
+    <ul>
+      <li><a href="#dashboard" aria-current="page">Dashboard</a></li>
+      <li><a href="#analytics">Analytics</a></li>
+      <li><a href="#messages">Messages</a></li>
+      <li><a href="#settings">Settings</a></li>
+    </ul>
+  </nav>
+</aside>
+CSS/* CSS Styling */
+/* সাইডবারের মূল কনটেইনার */
+.sidebar-container {
+  position: fixed;        /* স্ক্রিনের সাথে ফিক্সড থাকবে */
+  top: 0;
+  left: 0;
+  width: 250px;           /* সাইডবারের চওড়া */
+  height: 100vh;          /* স্ক্রিনের পুরো উচ্চতা (100% Viewport Height) */
+  background-color: #1e293b;
+  padding-top: 20px;
+}
+
+/* ভার্টিকাল মেনুর লিস্ট সাজানো */
+.vertical-menu ul {
+  list-style-type: none;  /* ডিফল্ট বুলেট পয়েন্ট সরাতে */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* আইটেমগুলোকে উপর-নিচে রাখার জন্য */
+}
+
+/* লিংকের স্টাইল */
+.vertical-menu a {
+  display: block;         /* পুরো খালি জায়গায় ক্লিকযোগ্য করতে */
+  padding: 12px 20px;
+  color: #94a3b8;
+  text-decoration: none;
+}
+
+/* অ্যাক্টিভ এবং হোভার স্টেট */
+.vertical-menu a:hover,
+.vertical-menu a[aria-current="page"] {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+
+*****
+
+
+প্রধান HTML Elements<aside>: সাইডবারকে পেজের মূল কনটেন্টের অংশ না বানিয়ে একটি পরিপূরক সেকশন হিসেবে ডিফাইন করে।  <nav>: নেভিগেশন মেনুর প্রধান ধারক (Container)।  <button>: সাইডবার খোলা/বন্ধ করার টগল বাটন হিসেবে ব্যবহৃত হয়।  <ul> / <li> / <a>: মেনুর আইটেম এবং লিঙ্কগুলো সাজাতে ব্যবহৃত হয়।প্রয়োজনীয় ARIA Attributes ও Value এর বিস্তারিত  Attributeকাজ ও অর্থসম্ভাব্য Valuesউদাহরণ ও বিবরণroleউপাদানটি সাইডবার মেনুতে কী ভূমিকা পালন করছে তা স্ক্রিন রিডারকে জানায়।"navigation", "complementary"<aside role="complementary"> বা <nav role="navigation">।aria-expandedসাইডবারটি বর্তমানে খোলা (Expanded) নাকি বন্ধ (Collapsed) আছে তা নির্দেশ করে।"true", "false""true" = খোলা, "false" = বন্ধ। টগল বাটনে ব্যবহার করা হয়।aria-controlsটগল বাটনটি কোন নির্দিষ্ট সাইডবার Element-কে নিয়ন্ত্রণ করছে তা যুক্ত করে।সাইডবারের id (যেমন: "sidebar-menu")<button aria-controls="sidebar-menu">aria-hiddenসাইডবারটি স্ক্রিনে অদৃশ্য থাকলে স্ক্রিন রিডার থেকেও তা লুকিয়ে রাখে।"true", "false""true" = স্ক্রিন রিডার এটি পড়বে না, "false" = পড়বে।aria-labelকোনো উপাদানের জন্য একটি স্পষ্ট নাম বা বিবরণ নির্ধারণ করে।String Text (যেমন: "Main Menu")<nav aria-label="Sidebar Navigation">aria-currentমেনুর কোন লিঙ্কটিতে ব্যবহারকারী বর্তমানে অবস্থান করছেন তা বোঝায়।"page", "true"<a href="/dashboard" aria-current="page">প্র্যাকটিক্যাল কোড উদাহরণHTML<!-- সাইডবার খোলার/বন্ধ করার বাটন -->
+<button 
+  type="button" 
+  aria-expanded="false" 
+  aria-controls="sidebar-menu" 
+  aria-label="Toggle Navigation Menu">
+  ☰ Menu
+</button>
+
+<!-- সাইডবার এলাকা -->
+<aside id="sidebar-menu" aria-hidden="true">
+  <nav aria-label="Sidebar Navigation">
+    <ul>
+      <li><a href="/home" aria-current="page">Home</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/settings">Settings</a></li>
+    </ul>
+  </nav>
+</aside>
+জাভাস্ক্রিপ্ট আচরণ: ব্যবহারকারী যখন টগল বাটনে ক্লিক করবেন, তখন জাভাস্ক্রিপ্ট দিয়ে aria-expanded এর মান "false" থেকে "true" এবং সাইডবারের aria-hidden এর মান "true" থেকে "false" পরিবর্তন করতে হয়।

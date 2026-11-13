@@ -1,0 +1,26 @@
+.box{
+   height: 200px;
+   width: 200px;
+   font-size: 32px;
+   text-align: center;
+   padding: 10px; 
+   margin: 64px;
+}
+
+.box1{
+    background: hotpink; 
+    transition: 1s;
+}
+
+.box1:hover{
+    box-shadow: 5px 5px 10px #8a8a8a;
+    border-radius: 20px;
+    transition: 5px;
+    cursor: not-allowed;
+    transform: rotate(20deg);
+    color: blue; 
+}
+
+.box2{
+    background: lightgreen;
+}

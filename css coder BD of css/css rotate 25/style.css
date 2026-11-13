@@ -1,0 +1,45 @@
+.containar{
+    
+}
+.box{
+   height: 200px;
+   width: 200px;
+   font-size: 30px;
+   text-align: center;
+   padding: 10px;
+   margin: 20px auto; 
+
+}
+.box1{
+    background: lightblue;
+}
+.box1:hover{
+    transform: rotate(50deg);
+    transition: 3s;
+}
+.box2{
+    background: lightgreen;
+}
+.box2:hover{
+    transform: rotatex(45deg);
+    transition: 2s;
+}
+.box3{
+    background: lightsalmon;
+}
+.box3:hover{
+    transform: rotatey(50deg);
+    transition: 2s;
+}
+.offer{
+    width: 300px;
+    padding: 10px;
+    background: red;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    position: fixed;
+    right: -80px;
+    top: 50px;
+    transform: rotate(45deg);
+}

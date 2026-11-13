@@ -1,0 +1,48 @@
+ul{
+    background: lightsalmon;
+    font-size: 20px;
+    text-align: left;
+    list-style-position: inside;
+}
+ul li:before{
+    content: " country is ";
+    color: red;
+} 
+
+ul li:after{
+    content: " after text ";
+    color: blue;
+}
+
+.loader{
+    height: 40px;
+    width: 400pz;
+    border: 2px solid #000;
+    position: relative;
+}
+.loader::before{
+    content: "80%";
+    height: 100%;
+    width: 80%;
+    background: lightsalmon;
+    position: absolute; 
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}
+.flag{
+    width: 600px;
+    height: 400px;
+    background: green;
+    position: relative;
+}
+.flag:after{
+    content: "";
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+    top: 50px;
+    left: 150px;
+}
