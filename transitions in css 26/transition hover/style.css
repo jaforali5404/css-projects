@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: hsl(300, 100%, 50%);
+    color: #201c1c;
+}
+
+.conteinar {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+}
+
+.box {
+    width: 100px;
+    aspect-ratio: 1;
+    background-color: blue;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #201c1c;
+    transition: all 2s;
+}
+
+/* first box */
+
+.box:nth-child(1):hover {
+    transition-timing-function: ease;
+    translate: 90vw 0;
+
+    /* new css feature */
+}
+
+/* secont box */
+
+.box:nth-child(2):hover {
+   transform: translateX(90vw);
+   transition: 5s ease-in;
+}
+
+/* third box */
+
+.box:nth-child(3):hover {
+    background-color: chartreuse;
+    transform: translateX(90vw);
+    transition: 5s ease-in-out;
+}
+
+/* forth box */
+
+.box:nth-child(4):hover {
+    background-color: rgb(245, 97, 12);
+    transform: translateX(90vw);
+    transition: 5s linear;
+}
+

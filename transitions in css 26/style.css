@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 24px;
+    font-family: "urbanist", sans-serif;
+}
+
+body {
+    background-color: #140404;
+    color: #fff;
+    height: 100vh;
+}
+
+.containar {
+    height: 100vh;
+    max-width: 1300px;
+    padding: 64px 0;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+}
+
+
+.grid {
+    display: grid;
+    align-items: center;
+    gap: 64px;
+}
+
+.grid-two-column {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.hero-contain h1 {
+    font-size: 48px;
+    text-align: left;
+}
+
+.hero-contain p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 20px 0 40px 0;
+}
+
+img {
+    max-width: 80%;
+    height: auto;
+}
+
+a {
+    background-color: transparent;
+    display: inline-block;
+    padding: 12px 32px;
+    text-decoration: none;
+    border-radius: 05px;
+    font-size: 24px;
+    font-weight: bold;
+    border: 5px solid #fff;
+    color: #fff;
+    width: 200px;
+    text-align: center;
+
+    /* transition code :starts here */
+
+    transition-property: width, color, background-color;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 2s;
+
+    /* 4 line aksate lekher niyom */
+
+    /* transition: width 1s linear 2s;
+    -webkit-transition: width 1s;
+    -moz-transition: width 1s;
+    -ms-transition: width 1s;
+    -o-transition: width 1s;
+     */
+    box-shadow: rgba(255, 255, 200, 0.8) 0px 54px 55px, rgba(255, 255, 255, 0.12) 0px -12px 30px, rgba(255, 255, 255, 0.12) 0px 4px 6px, rgba(255, 220, 255, 0.17) 0px 12px 13px, rgba(255, 220, 255, 0.09) 0px -3px 5px;
+     
+}
+
+
+
+.hero-contain a:hover {
+    background-color: aliceblue;
+    color: black;
+    width: 300px;
+}
+
+img {
+     transition: 1s linear;
+    -webkit-transition: 1s linear;
+    -moz-transition: 1s linear;
+    -ms-transition: 1s linear;
+    -o-transition: 1s linear;
+    
+}
+
+img:hover {
+    scale: 1.5;
+
+}
